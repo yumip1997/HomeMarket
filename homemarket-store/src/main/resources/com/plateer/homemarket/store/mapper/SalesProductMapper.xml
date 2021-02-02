@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.plateer.homemarket.store.mapper.SalesProductMapper">
+
+<insert id="create" parameterType="com.plateer.homemarket.entity.Product">
+insert into product
+	(product_name, product_detail, categories, quantity, price, member_id)
+	values(
+		#{productName},
+		#{productDetail},
+		#{categories},
+		#{quantity},
+		#{price},
+		#{memberId}
+	)
+
+</insert>
+
+<select id="retrieveAll" parameterType="String" resultType="com.plateer.homemarket.entity.Product">
+select 
+	product_id as productId,
+	product_name as productName,
+	categories,
+	quantity,
+	price,
+	member_id as memberId,
+	upload_date as uploadDate
+from product
+where member_id = #{memberId}
+</select>
+
+<select id="retrieveByName" resultType="com.plateer.homemarket.entity.Product">
+select 
+	product_id as productId,
+	product_name as productName,
+	categories,
+	quantity,
+	price,
+	member_id as memberId,
+	upload_date as uploadDate
+from product
+where member_id = #{memberId} and product_name like concat('%', #{productName}, '%')
+</select>
+
+<select id="retrieve" parameterType="int" resultType="com.plateer.homemarket.entity.Product">
+select 
+	product_id as productId,
+	product_name as productName,
+	product_detail as productDetail,
+	categories,
+	quantity,
+	price,
+	member_id as memberId,
+	upload_date as uploadDate
+from product
+where product_id = #{productId}
+</select>
+
+<update id="update" parameterType="com.plateer.homemarket.entity.Product">
+update product
+set
+	product_name = #{productName},
+	product_detail = #{productDetail},
+	categories = #{categories},
+	price = #{price}
+where
+	product_id = #{productId}
+</update>
+
+<delete id="delete" parameterType="int">
+delete from product
+where product_id = #{productId}
+
+</delete>
+</mapper>
