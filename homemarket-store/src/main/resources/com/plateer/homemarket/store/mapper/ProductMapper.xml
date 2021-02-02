@@ -4,6 +4,19 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.plateer.homemarket.store.mapper.ProductMapper">
 
+<insert id="create" parameterType="com.plateer.homemarket.entity.Product">
+insert into product
+	(product_name, product_detail, categories, quantity, price, member_id)
+	values(
+		#{productName},
+		#{productDetail},
+		#{categories},
+		#{quantity},
+		#{price},
+		#{memberId}
+	)
+</insert>
+
 <select id="retrieveAll" resultType="com.plateer.homemarket.entity.Product">
 	select 	product_id as productId,
 			product_name as productName,
@@ -13,6 +26,19 @@
 			member_id as memberId,
 			upload_date as uploadDate
 	from product
+</select>
+
+<select id="retrieveAllByMemberId" parameterType="String" resultType="com.plateer.homemarket.entity.Product">
+select 
+	product_id as productId,
+	product_name as productName,
+	categories,
+	quantity,
+	price,
+	member_id as memberId,
+	upload_date as uploadDate
+from product
+where member_id = #{memberId}
 </select>
 
 <select id="retrieveByCategories" parameterType="String" resultType="com.plateer.homemarket.entity.Product">
@@ -39,6 +65,19 @@
 	where product_name like concat('%',#{productName},'%')
 </select>
 
+<select id="retrieveByNameMemberId" resultType="com.plateer.homemarket.entity.Product">
+select 
+	product_id as productId,
+	product_name as productName,
+	categories,
+	quantity,
+	price,
+	member_id as memberId,
+	upload_date as uploadDate
+from product
+where member_id = #{memberId} and product_name like concat('%', #{productName}, '%')
+</select>
+
 <select id="retrieve" parameterType="int" resultType="com.plateer.homemarket.entity.Product">
 	select 	product_id as productId,
 			product_name as productName,
@@ -51,4 +90,21 @@
 	from product
 	where product_id = #{productId}
 </select>
+
+<update id="update" parameterType="com.plateer.homemarket.entity.Product">
+update product
+set
+	product_name = #{productName},
+	product_detail = #{productDetail},
+	categories = #{categories},
+	price = #{price},
+	quantity = #{quantity}
+where
+	product_id = #{productId}
+</update>
+
+<delete id="delete" parameterType="int">
+delete from product
+where product_id = #{productId}
+</delete>
 </mapper>

@@ -25,9 +25,13 @@ public class OrderServiceLogic implements OrderService{
 	@Override
 	public void register(Order order) {
 		// TODO Auto-generated method stub
-		int quantity = productStore.retreive(order.getProductId()).getQuantity();
+		Product product =productStore.retreive(order.getProductId());
+		int quantity = product.getQuantity();
 		if(quantity == 0) throw new OutofStockException("We are out of stock!");
 		orderStore.create(order);
+		product.setQuantity(--quantity);
+		productStore.update(product);
+		
 	}
 	
 	@Override
@@ -52,19 +56,20 @@ public class OrderServiceLogic implements OrderService{
 		orderStore.update(order);
 		
 		product.setQuantity(nextQuantity);
+		productStore.update(product);
 		
 		
 	}
+	
 	@Override
 	public void remove(int productId) {
 		// TODO Auto-generated method stub
 		Product product = productStore.retreive(productId);
-		int nextQuantity = product.getQuantity() -1 ;
+		int quantity = product.getQuantity();
 		orderStore.delete(productId);
 		
-		product.setQuantity(nextQuantity);
+		product.setQuantity(++quantity);
+		productStore.update(product);
 	}
 	
-	
-
 }

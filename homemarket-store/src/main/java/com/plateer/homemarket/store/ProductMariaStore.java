@@ -15,11 +15,23 @@ public class ProductMariaStore implements ProductStore{
 	public ProductMariaStore(ProductMapper productMapper){
 		this.productMapper = productMapper;
 	}
+	
+	@Override
+	public void create(Product product) {
+		// TODO Auto-generated method stub
+		productMapper.create(product);
+	}
 
 	@Override
 	public List<Product> retrieveAll() {
 		// TODO Auto-generated method stub
 		return productMapper.retrieveAll();
+	}
+	
+	@Override
+	public List<Product> retrieveAllByMemberId(String memberId) {
+		// TODO Auto-generated method stub
+		return productMapper.retrieveAllByMemberId(memberId);
 	}
 
 	@Override
@@ -33,11 +45,29 @@ public class ProductMariaStore implements ProductStore{
 		// TODO Auto-generated method stub
 		return productMapper.retrieveByName(productName);
 	}
+	
+	@Override
+	public List<Product> retrieveByNameMemberId(String productName, String memberId) {
+		// TODO Auto-generated method stub
+		return productMapper.retrieveByNameMemberId(productName, memberId);
+	}
 
 	@Override
 	public Product retreive(int productId) {
 		// TODO Auto-generated method stub
 		return productMapper.retrieve(productId);
+	}
+
+	@Override
+	public void update(Product product) {
+		// TODO Auto-generated method stub
+		productMapper.update(product);
+	}
+
+	@Override
+	public void delete(int productId) {
+		// TODO Auto-generated method stub
+		productMapper.delete(productId);
 	}
 	
 	
