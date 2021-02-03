@@ -44,8 +44,8 @@ public class OrderResource {
 	}
 	
 	@DeleteMapping("/delete")
-	public void remove(@RequestParam int orderId) {
-		orderService.remove(orderId);
+	public void remove(@RequestParam int productId, @RequestParam int orderId) {
+		orderService.remove(productId, orderId);
 	}
 	
 }

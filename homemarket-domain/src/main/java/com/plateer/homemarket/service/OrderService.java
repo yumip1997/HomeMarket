@@ -10,6 +10,6 @@ public interface OrderService {
 	public List<Order> findAll(String memberId);
 	public Order find(int orderId);
 	public void modfiy(Order order);
-	public void remove(int orderId);
+	public void remove(int productId, int orderId);
 
 }

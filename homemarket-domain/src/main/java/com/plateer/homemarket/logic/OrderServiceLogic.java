@@ -26,10 +26,11 @@ public class OrderServiceLogic implements OrderService{
 	public void register(Order order) {
 		// TODO Auto-generated method stub
 		Product product =productStore.retreive(order.getProductId());
-		int quantity = product.getQuantity();
-		if(quantity == 0) throw new OutofStockException("We are out of stock!");
+		int nextQuantity = product.getQuantity() - order.getCount();
+		if(nextQuantity <= 0) throw new OutofStockException("We are out of stock!");
+		
 		orderStore.create(order);
-		product.setQuantity(--quantity);
+		product.setQuantity(nextQuantity);
 		productStore.update(product);
 		
 	}
@@ -49,26 +50,27 @@ public class OrderServiceLogic implements OrderService{
 	@Override
 	public void modfiy(Order order) {
 		// TODO Auto-generated method stub
+		Order prevOrder = orderStore.retrieve(order.getOrderId());
 		Product product = productStore.retreive(order.getProductId());
-		int nextQuantity = product.getQuantity() - order.getCount();
+		int nextQuantity = product.getQuantity() - (order.getCount() - prevOrder.getCount());
 		
 		if(nextQuantity <=0 ) throw new OutofStockException("We are out of stock!");
 		orderStore.update(order);
 		
 		product.setQuantity(nextQuantity);
 		productStore.update(product);
-		
-		
 	}
 	
 	@Override
-	public void remove(int productId) {
+	public void remove(int productId, int orderId) {
 		// TODO Auto-generated method stub
+		Order prevOrder = orderStore.retrieve(orderId);
 		Product product = productStore.retreive(productId);
-		int quantity = product.getQuantity();
-		orderStore.delete(productId);
+		int nextQuantity = product.getQuantity() + prevOrder.getCount();
 		
-		product.setQuantity(++quantity);
+		orderStore.delete(orderId);
+		
+		product.setQuantity(nextQuantity);
 		productStore.update(product);
 	}
 	
