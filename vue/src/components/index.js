@@ -1,1 +1,2 @@
-export {default as MainHeader} from 'MainHeader';
+export * from './shared';
+export * from './member';

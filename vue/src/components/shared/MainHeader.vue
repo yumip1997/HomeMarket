@@ -1,7 +1,7 @@
 <template>
     <div>
         <b-navbar toggleable="lg" type="dark" variant="info">
-            <b-navbar-brand href="#">Home Market</b-navbar-brand>
+            <b-navbar-brand @click="handleClickMenu('home')">Home Market</b-navbar-brand>
 
             <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
@@ -30,6 +30,9 @@
         methods : {
             handleClickMenu : function(menu){
                 switch(menu){
+                    case 'home' :
+                        this.$router.push('/');
+                        break;
                     case 'register' :
                         this.$router.push('/member/register');
                         break;

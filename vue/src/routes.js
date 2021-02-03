@@ -1,6 +1,8 @@
-import {MemberRegister} from './components/member/MemberRegister'
+import MemberRegister from './components/member/MemberRegister'
+import DefaultPage from './components/default/DefaultPage'
 
 const routes = [
-    {path : '/member/register', components : MemberRegister}
+    {path : '/', component : DefaultPage},
+    {path : '/member/register', component : MemberRegister},
 ]
 export default routes;
