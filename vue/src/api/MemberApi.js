@@ -1,33 +1,28 @@
-import axios from 'axios';
+import AxiosClient from './AxiosClient';
 
-const proxyURL =' /member'
+class MemberApi{
+    constructor(){
+        this.client = new AxiosClient('/member');
+    }
 
-export const registerMember = (member) => {
-    return axios.post(`${proxyURL}/create`, member,
-    {
-		headers : { 'Access-Control-Allow-Origin': '*'}
-	})
-    .then(result => (result.status === 201))
+    async register(member){
+        return this.client.post('/create', member);
+    }
+
+    async findById(memberId){
+        const data = (await this.client.get('/retrieveById', {memberId : memberId})).data;
+        return data;
+    }
+
+    async modify(member){
+        return this.client.put('/update', member);
+    }
+
+    async delete(memberId){
+        return this.client.delete('/delete', {memberId : memberId});
+    }
 }
 
-export const findMemberById = (memberId) => {
-    return axios.get(`${proxyURL}/retrieveById?memberId=${memberId}`,
-    {
-        headers : { 'Access-Control-Allow-Origin': '*'}
-    })
-    .then(result => result.data)
-}
+const instance = new MemberApi();
 
-export const modifyMember = (member) => {
-    return axios.post(`${proxyURL}/update`, member, {
-        headers : { 'Access-Control-Allow-Origin': '*'}
-    }).then(result => result)
-}
-
-export const removeMember = (memberId) => {
-    return axios.delete(`${proxyURL}/delete?memberId=${memberId}`,{
-        headers : { 'Access-Control-Allow-Origin': '*'}
-    }).then(result => result)
-
-}
-
+export default instance;
