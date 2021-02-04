@@ -7,16 +7,17 @@
 
             <b-collapse id="nav-collapse" is-nav="is-nav">
                 <b-navbar-nav>
-                    <b-nav-item @click="handleClickMenu('homedeco')">홈데코</b-nav-item>
-                    <b-nav-item @click="handleClickMenu('funrniture')">가구</b-nav-item>
-                    <b-nav-item @click="handleClickMenu('kitchen')">주방</b-nav-item>
+                    <b-nav-item @click="handleClickMenu('shopping')">쇼핑하기</b-nav-item>
                 </b-navbar-nav>
 
                 <!-- Right aligned nav items -->
                 <b-navbar-nav class="ml-auto">
                     <b-navbar-nav>
-                        <b-nav-item @click="handleClickMenu('register')">가입하기</b-nav-item>
-                        <b-nav-item @click="handleClickMenu('login')">로그인</b-nav-item>
+                        <b-nav-item @click="handleClickMenu('selling')" v-if="IsLoggedIn">판매하기</b-nav-item>
+                        <b-nav-item @click="handleClickMenu('myInfo')" v-if="IsLoggedIn">마이페이지</b-nav-item>
+                        <b-nav-item @click="handleClickMenu('logout')" v-if="IsLoggedIn">로그아웃</b-nav-item>
+                        <b-nav-item @click="handleClickMenu('register')" v-if="!IsLoggedIn">가입하기</b-nav-item>
+                        <b-nav-item @click="handleClickMenu('login')" v-if="!IsLoggedIn">로그인</b-nav-item>
                     </b-navbar-nav>
                 </b-navbar-nav>
             </b-collapse>
@@ -27,23 +28,45 @@
 <script>
     export default {
         name: 'main-header',
-        methods : {
-            handleClickMenu : function(menu){
-                switch(menu){
-                    case 'home' :
+        data : function(){
+            return {
+                IsLoggedIn : false
+            }
+        },
+        mounted : function(){
+            const LoggedInMemberId = this.$session.get('LoggedInId');
+            if(LoggedInMemberId){
+                this.IsLoggedIn = true;
+            }else{
+                this.IsLoggedIn = false;
+            }
+        },
+        methods: {
+            handleClickMenu: function (menu) {
+                switch (menu) {
+                    case 'home':
                         this.$router.push('/');
                         break;
-                    case 'register' :
+                    case 'shopping':
+                        this.$router.push('/product/list');
+                        break;
+                    case 'register':
                         this.$router.push('/member/register');
                         break;
-                
+                    case 'myInfo' :
+                        this.$router.push('/member/myInfo');
+                        break;
+                    case 'login' :
+                        this.$router.push('/login').catch(() => {});
+                        break;
+                    case 'logout' :
+                        this.$session.remove('LoggedInId');
+                        this.$router.go('/');
+                        break;
+                }
             }
-
         }
-    
     }
-}
 </script>
 
-<style>
-</style>
+<style></style>

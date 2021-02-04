@@ -52,4 +52,10 @@ public class MemberMariaStore implements MemberStore{
 		// TODO Auto-generated method stub
 		memberMapper.delete(memberId);
 	}
+
+	@Override
+	public boolean retireveByIdPw(String memberId, String password) {
+		// TODO Auto-generated method stub
+		return memberMapper.retrieveByIdPw(memberId, password);
+	}
 }

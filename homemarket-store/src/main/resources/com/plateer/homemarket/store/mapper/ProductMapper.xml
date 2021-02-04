@@ -44,6 +44,7 @@ where member_id = #{memberId}
 <select id="retrieveByCategories" parameterType="String" resultType="com.plateer.homemarket.entity.Product">
 	select 	product_id as productId,
 			product_name as productName,
+			product_detail as productDetail,
 			categories,
 			quantity,
 			price,

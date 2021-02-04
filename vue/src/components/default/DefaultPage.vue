@@ -9,9 +9,8 @@
     img-height="480"
   >
     <b-carousel-slide
-      caption="홈데코"
-      img-src="/assets/img/homedeco.jpg"
-    ></b-carousel-slide>
+      img-src="https://cdn.pixabay.com/photo/2014/08/11/21/39/wall-416060_1280.jpg">
+    </b-carousel-slide>
     <b-carousel-slide
       caption="가구"
       img-src="https://picsum.photos/1024/480/?image=12"

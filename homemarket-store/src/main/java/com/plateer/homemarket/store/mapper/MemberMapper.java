@@ -15,4 +15,6 @@ public interface MemberMapper {
 	public List<Member> retrieveByName(String name);
 	public void update(Member member);
 	public void delete(String memberId);
+	
+	public boolean retrieveByIdPw(String memberId, String password);
 }

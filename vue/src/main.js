@@ -2,13 +2,25 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import App from './App.vue'
 
-import routes from './routes.js';
+import VueSession from 'vue-session'
+import VueMoment from 'vue-moment'
+
+import routes from './routes.js'
 
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.config.productionTip = false
+
+var sessionOptions = {
+  persist: true
+}
+
+Vue.use(VueSession, sessionOptions)
+Vue.use(VueSession)
+
+Vue.use(VueMoment)
 Vue.use(VueRouter)
 
 Vue.use(BootstrapVue)

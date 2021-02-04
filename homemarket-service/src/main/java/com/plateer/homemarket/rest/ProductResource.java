@@ -39,12 +39,12 @@ public class ProductResource {
 	}
 	
 	@GetMapping("/retrieveByCategories")
-	public List<Product> findByCategories(String categories){
+	public List<Product> findByCategories(@RequestParam String categories){
 		return productService.findByCategories(categories);
 	}
 	
 	@GetMapping("/retrieveByName")
-	public List<Product> findByName(String productName){
+	public List<Product> findByName(@RequestParam String productName){
 		return productService.findByName(productName);
 	}
 	
@@ -54,7 +54,7 @@ public class ProductResource {
 	}
 	
 	@GetMapping("/retrieve")
-	public Product find(int productId) {
+	public Product find(@RequestParam int productId) {
 		return productService.find(productId);
 	}
 	

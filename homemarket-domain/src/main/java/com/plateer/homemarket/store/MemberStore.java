@@ -13,5 +13,6 @@ public interface MemberStore {
 	public List<Member> retrieveByName(String name);
 	public void modify(Member member);
 	public void remove(String memberId);
-
+	
+	public boolean retireveByIdPw(String memberId, String password);
 }

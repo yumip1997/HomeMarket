@@ -63,6 +63,10 @@
 	delete from member where member_id = #{memberId}
 </delete>
 
-
+<select id="retrieveByIdPw" resultType="Boolean">
+	select if(count(*) = 1, 'true', 'false')
+	from member
+	where member_id=#{memberId} and password=#{password}
+</select>
 
 </mapper>
