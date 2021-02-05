@@ -27,7 +27,7 @@
                         </b-form-group>
                     </b-modal>
 
-                    <b-button class="ml-3"  @click="orderDeleteHandler(order.productId, order.orderId)">주문 취소하기</b-button>
+                    <b-button class="ml-3" @click="orderDeleteHandler(order.productId, order.orderId)">주문 취소하기</b-button>
                 </td>
             </tr>
         </table>
@@ -57,8 +57,8 @@ export default {
         })
     },
     methods : {
-        orderModifyHandler : function(index){
-            alert(index);
+        orderModifyHandler : function(){
+            //주문 수정
         },
         orderDeleteHandler : function(productId, orderId){
            OrderApi.delete(productId, orderId)
