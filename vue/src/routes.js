@@ -5,6 +5,7 @@ import MyInfo from './components/member/MyInfo'
 import MemberModify from './components/member/MemberModify'
 
 import ProductList from './components/product/ProductList'
+import ProductRegister from './components/product/ProductRegister'
 
 import OrderList from './components/order/OrderList'
 
@@ -16,6 +17,7 @@ const routes = [
     {path : '/member/modify', component : MemberModify},
     {path : '/product/list', component : ProductList},
     {path : '/order/list', component : OrderList},
+    {path : '/sell/register', component : ProductRegister},
 ]
 
 export default routes;

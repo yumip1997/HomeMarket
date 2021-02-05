@@ -5,7 +5,7 @@ class Product{
         this.productDetail = productDetail;
         this.categroies = categroies;
         this.quantity = quantity;
-        this.price = priec;
+        this.price = price;
         this.memberId = memberId;
         this.uploadDate = uploadDate;
     }

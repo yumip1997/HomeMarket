@@ -33,7 +33,7 @@
                     <b-button v-b-modal.order-modal>
                         주문하기
                     </b-button>
-                    <b-modal id="order-modal" title=주문하기 @ok="handleOrder(product.productId, product.productName)">
+                    <b-modal id="order-modal" title=주문하기 @ok="orderRegisterHandler(product.productId, product.productName)">
                         <b-form-group>
                             <b-form-input v-model="order.count" placeholder="주문수량"></b-form-input>
                         </b-form-group>
@@ -72,7 +72,7 @@
                     .findByCategories(categories)
                     .then(data => this.products = data)
             },
-            handleOrder : function(productId, productName){
+            orderRegisterHandler : function(productId, productName){
                 this.makeOrder(productId, productName);
                 OrderApi.register(this.order)
                 .then(value => {
