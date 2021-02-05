@@ -10,3 +10,5 @@ class Product{
         this.uploadDate = uploadDate;
     }
 }
+
+export default Product;

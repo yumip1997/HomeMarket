@@ -26,6 +26,7 @@
 			order_date as orderDate
 	from orders
 	where member_id = #{memberId}
+	order by order_date desc
 </select>
 
 <select id="retrieve" resultType="com.plateer.homemarket.entity.Order">

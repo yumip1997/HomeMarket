@@ -53,6 +53,7 @@ export default {
             if(this.check){
                 this.$session.set("LoggedInId", this.memberId);
                 this.$router.push('/');
+                this.$router.go('/');
             }else{
                 this.message = '아이디 또는 비밀번호가 일치하지 않습니다!';
             }

@@ -8,6 +8,7 @@
             <b-collapse id="nav-collapse" is-nav="is-nav">
                 <b-navbar-nav>
                     <b-nav-item @click="handleClickMenu('shopping')">쇼핑하기</b-nav-item>
+                    <b-nav-item @click="handleClickMenu('order')" v-if="IsLoggedIn">나의 주문 목록</b-nav-item>
                 </b-navbar-nav>
 
                 <!-- Right aligned nav items -->
@@ -50,6 +51,9 @@
                     case 'shopping':
                         this.$router.push('/product/list');
                         break;
+                    case 'order' :
+                        this.$router.push('/order/list');
+                        break;
                     case 'register':
                         this.$router.push('/member/register');
                         break;
@@ -61,6 +65,7 @@
                         break;
                     case 'logout' :
                         this.$session.remove('LoggedInId');
+                        this.$router.push('/');
                         this.$router.go('/');
                         break;
                 }

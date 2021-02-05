@@ -6,6 +6,8 @@ import MemberModify from './components/member/MemberModify'
 
 import ProductList from './components/product/ProductList'
 
+import OrderList from './components/order/OrderList'
+
 const routes = [
     {path : '/', component : DefaultPage},
     {path : '/login', component : LoginVue},
@@ -13,6 +15,7 @@ const routes = [
     {path : '/member/myInfo', component : MyInfo},
     {path : '/member/modify', component : MemberModify},
     {path : '/product/list', component : ProductList},
+    {path : '/order/list', component : OrderList},
 ]
 
 export default routes;

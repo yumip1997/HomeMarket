@@ -19,7 +19,6 @@ class MemberApi{
     }
 
     async delete(memberId){
-        console.log(memberId);
         return this.client.delete('/delete', {memberId : memberId});
     }
 }
