@@ -18,12 +18,12 @@
                 <td>{{order.orderDate}}</td>
                 <td>
                     <b-button class="ml-3" v-b-modal.order-modal>주문 수정하기</b-button>
-                    <b-modal id="order-modal" title=주문수정하기 @ok="orderModifyHandler(order.orderId)">
+                    <b-modal id="order-modal" title=주문수정하기 @ok="orderModifyHandler(order.orderId,order.productId)">
                         <b-form-group>
-                            <b-form-input v-model="order.count" placeholder="주문수량"></b-form-input>
+                            <b-form-input v-model="changedOrder.count" placeholder="주문수량"></b-form-input>
                         </b-form-group>
                         <b-form-group>
-                            <b-form-input v-model="order.address" placeholder="배송지"></b-form-input>
+                            <b-form-input v-model="changedOrder.address" placeholder="배송지"></b-form-input>
                         </b-form-group>
                     </b-modal>
 
@@ -45,7 +45,7 @@ export default {
     data : function(){
         return {
             orders : [],
-            order : new Order()
+            changedOrder : new Order()
         }
     },
     mounted : function(){
@@ -57,8 +57,14 @@ export default {
         })
     },
     methods : {
-        orderModifyHandler : function(){
+        orderModifyHandler : function(orderId, productId){
             //주문 수정
+            this.changedOrder.orderId = orderId;
+            this.changedOrder.productId = productId;
+            OrderApi.modify(this.changedOrder)
+            .then(value => {
+                value.status === 200 ? alert('주문 수정이 완료되었습니다.') : alert('주문 수정을 실패하였습니다.');
+            })
         },
         orderDeleteHandler : function(productId, orderId){
            OrderApi.delete(productId, orderId)
