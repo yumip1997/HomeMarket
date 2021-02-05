@@ -18,7 +18,7 @@
                 <td>{{order.orderDate}}</td>
                 <td>
                     <b-button class="ml-3" v-b-modal.order-modal>주문 수정하기</b-button>
-                    <b-modal id="order-modal" title=주문수정하기 @ok="handleOrder(order.orderId)">
+                    <b-modal id="order-modal" title=주문수정하기 @ok="orderModifyHandler(order.orderId)">
                         <b-form-group>
                             <b-form-input v-model="order.count" placeholder="주문수량"></b-form-input>
                         </b-form-group>
