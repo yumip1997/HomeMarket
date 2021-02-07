@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import LoginApi from '../../api/LoginApi';
+import { LoginApi } from '@/api';
 
 export default {
     name : 'login-vue',

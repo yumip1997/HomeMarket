@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import  MainHeader  from './components/shared/MainHeader';
+import  { MainHeader }  from '@/components';
 
 export default {
   name: 'App',

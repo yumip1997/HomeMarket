@@ -57,6 +57,9 @@
                     case 'register':
                         this.$router.push('/member/register');
                         break;
+                    case 'selling' :
+                        this.$router.push('/product/register');
+                        break;
                     case 'myInfo' :
                         this.$router.push('/member/myInfo');
                         break;

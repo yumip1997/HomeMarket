@@ -41,8 +41,8 @@
 </template>
 
 <script>
-import Member from '../../model/Member';
-import MemberApi from '../../api/MemberApi';
+import { Member } from '@/model'
+import { MemberApi } from '@/api'
 
 export default {
     name : 'my-info',

@@ -1,13 +1,11 @@
-import DefaultPage from './components/default/DefaultPage'
-import LoginVue from './components/shared/LoginVue'
-import MemberRegister from './components/member/MemberRegister'
-import MyInfo from './components/member/MyInfo'
-import MemberModify from './components/member/MemberModify'
+import { DefaultPage } from '@/components'
+import { LoginVue } from '@/components'
 
-import ProductList from './components/product/ProductList'
-import ProductRegister from './components/product/ProductRegister'
+import { MemberRegister, MyInfo, MemberModify } from '@/components'
 
-import OrderList from './components/order/OrderList'
+import { ProductList, ProductRegister, ProductDetail } from '@/components'
+
+import { OrderList, OrderDetail } from '@/components'
 
 const routes = [
     {path : '/', component : DefaultPage},
@@ -16,8 +14,10 @@ const routes = [
     {path : '/member/myInfo', component : MyInfo},
     {path : '/member/modify', component : MemberModify},
     {path : '/product/list', component : ProductList},
+    {path : '/product/detail/:id',component : ProductDetail},
+    {path : '/product/register', component : ProductRegister},
     {path : '/order/list', component : OrderList},
-    {path : '/sell/register', component : ProductRegister},
+    {path : '/order/detail/:id', component : OrderDetail},
 ]
 
 export default routes;

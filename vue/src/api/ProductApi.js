@@ -6,13 +6,19 @@ class PrdouctApi{
     }
 
     async register(product){
-        return this.client.post('/create', product);
+        return this.client.post('/create', product)
     }
 
     async findByCategories(categories){
         const data = (await this.client.get('/retrieveByCategories',
-        {categories : categories})).data;
-        return data; 
+        {categories : categories})).data
+        return data
+    }
+
+    async find(productId){
+        const data = (await this.client.get('/retrieve',
+        {productId : productId})).data
+        return data
     }
 }
 

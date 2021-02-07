@@ -7,47 +7,45 @@
     <b-container>
       <b-container>
         <b-form-group 
-            label="아이디 : ">
+            label="상품이름 : ">
          <b-form-input 
             type="text"
-            placeholder="아이디를 입력하세요"
-            v-model="member.memberId">
+            placeholder="상품이름을 입력하세요"
+            v-model="product.productName">
         </b-form-input>
         </b-form-group>
 
         <b-form-group  
-            label="이름 : ">
+            label="상품설명 : ">
          <b-form-input 
             type="text"
             placeholder="이름을 입력하세요"
-            v-model="member.name">
+            v-model="product.productDetail">
         </b-form-input>
         </b-form-group>
 
         <b-form-group 
-            label="이메일 : ">
+            label="카테고리 : ">
+            <b-checkbox value="homedeco" v-model="product.categories" checked >홈데코</b-checkbox>
+            <b-checkbox value="furniture" v-model="product.categories" >가구</b-checkbox>
+            <b-checkbox value="kitchen" v-model="product.categories" >주방</b-checkbox>
+        </b-form-group>
+
+        <b-form-group 
+            label="수량 : ">
         <b-form-input 
             type="text"
-            placeholder="이메일을 입력하세요"
-            v-model="member.email">
+            placeholder="수량을 입력하세요"
+            v-model="product.quantity">
         </b-form-input>
         </b-form-group>
 
         <b-form-group 
-            label="비밀번호 : ">
-        <b-form-input 
-            type="password"
-            placeholder="비밀번호를 입력하세요"
-            v-model="member.password">
-        </b-form-input>
-        </b-form-group>
-
-        <b-form-group 
-            label="주소 : ">
+            label="가격 : ">
         <b-form-input 
             type="text"
-            placeholder="주소를 입력하세요"
-            v-model="member.address">
+            placeholder="가격을 입력하세요"
+            v-model="product.price">
         </b-form-input>
         </b-form-group>
         <b-button type="button" @click="register">상품등록하기</b-button>       
@@ -57,8 +55,8 @@
 </template>
 
 <script>
-import Product from '../../model/Product'
-import ProductApi from '../../api/ProductApi'
+import { ProductApi } from '@/api'
+import { Product } from '@/model'
 
 export default {
     name : 'product-register',
@@ -67,12 +65,21 @@ export default {
         product : new Product()
       };
     },
-    methods : function(){
-      ProductApi.register(this.product)
-      .then(value => value === 201 ? alert('상품 등록이 완료되었습니다.') : alert('상품 등록을 실패하였습니다.'));
-      this.$router('/sell/register')
+    methods : {
+      register : function(){
+        this.product.memberId = this.$session.get("LoggedInId");
+        ProductApi.register(this.product)
+        .then(value => {
+          console.log(value.status)
+          if(value.status === 200){
+            alert('상품 등록이 완료되었습니다.')
+            this.$router.push('/product/list')
+          }else{
+            alert('상품 등록을 실패하였습니다.')
+          }
+      })
     }
-
+  }
 }
 </script>
 

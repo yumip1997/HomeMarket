@@ -12,15 +12,14 @@
             </b-card>
 
             <div class="mt-4" v-for="product in products" v-bind:key="product.index" id="product">
-                <h4>{{product.productName}}</h4>
                 <b-card
                     img-src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
                     img-alt="Card image"
                     img-left="img-left"
                     class="mb-3">
                     <b-card-text>
-                        상품 설명 :
-                        {{ product.productDetail }}
+                        상품 :
+                        {{ product.productName }}
                     </b-card-text>
                     <b-card-text>
                         재고 :
@@ -30,17 +29,9 @@
                         가격 :
                         {{product.price}}
                     </b-card-text>
-                    <b-button v-b-modal.order-modal>
-                        주문하기
-                    </b-button>
-                    <b-modal id="order-modal" title=주문하기 @ok="orderRegisterHandler(product.productId, product.productName)">
-                        <b-form-group>
-                            <b-form-input v-model="order.count" placeholder="주문수량"></b-form-input>
-                        </b-form-group>
-                        <b-form-group>
-                            <b-form-input v-model="order.address" placeholder="배송지"></b-form-input>
-                        </b-form-group>
-                    </b-modal>
+                    <b-card-text>
+                        <b-button type="button" @click="detailBtn(product.productId)">상세보기</b-button>
+                    </b-card-text>
                 </b-card>
             </div>
         </div>
@@ -49,16 +40,13 @@
 </template>
 
 <script>
-    import ProductApi from '../../api/ProductApi';
-    import OrderApi from '../../api/OrderApi';
-    import Order from '../../model/Order';
+    import { ProductApi }from '@/api'
 
     export default {
         name: 'product-list',
         data: function () {
             return {
                 products: [],
-                order : new Order(),
             }
         },
         mounted: function () {
@@ -72,18 +60,11 @@
                     .findByCategories(categories)
                     .then(data => this.products = data)
             },
-            orderRegisterHandler : function(productId, productName){
-                this.makeOrder(productId, productName);
-                OrderApi.register(this.order)
-                .then(value => {
-                   value.status === 200 ? alert('주문이 완료되었습니다.') : alert('주문을 실패하였습니다')
-                });
+            detailBtn : function(productId){
+                this.$router.push({
+                    path : '/product/detail/'+productId
+                })
             },
-            makeOrder : function(productId, productName){
-                this.order.productId = productId;
-                this.order.productName = productName;
-                this.order.memberId = this.$session.get('LoggedInId');
-            }
         }
     }
 </script>

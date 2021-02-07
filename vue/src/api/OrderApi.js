@@ -6,13 +6,19 @@ class OrderApi{
     }
 
     async register(order){
-        return this.client.post('/create', order);
+        return this.client.post('/create', order)
     }
 
     async findAll(memberId){
         const data = (await this.client.get('/retrieveAll',
-        {memberId : memberId})).data;
-        return data;
+        {memberId : memberId})).data
+        return data
+    }
+
+    async find(orderId){
+        const data = (await this.client.get('/retrieve',
+        {orderId : orderId})).data
+        return data
     }
 
     async modify(order){

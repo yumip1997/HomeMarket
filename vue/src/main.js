@@ -1,10 +1,11 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
+
 import App from './App.vue'
 
 import VueSession from 'vue-session'
 import VueMoment from 'vue-moment'
 
+import VueRouter from 'vue-router'
 import routes from './routes.js'
 
 import BootstrapVue from 'bootstrap-vue'

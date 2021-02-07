@@ -11,33 +11,24 @@
             <th>주문 상태</th>
             <th>주문 날짜</th>
             <th></th>
-            <tr v-for="(order,index) in orders" v-bind:key="order.index">
+            <tr v-for="order in orders" v-bind:key="order.index">
                 <td>{{order.productName}}</td>
                 <td>{{order.count}}</td>
                 <td>{{order.state}}</td>
                 <td>{{order.orderDate}}</td>
                 <td>
-                    <b-button class="ml-3" v-b-modal="'order-modal'" @click="orderModifyBtnHandler(index)">주문 수정하기</b-button>
-                    <b-button class="ml-3" @click="orderDeleteHandler(order.productId, order.orderId)">주문 취소하기</b-button>
+                    <b-button class="ml-3" v-b-modal="'order-modal'" @click="orderDetailHandler(order.orderId)">상세보기</b-button>
                 </td>
             </tr>
         </table>
-            <b-modal id="order-modal" title="주문 수정하기" @ok="orderModifyHandler()">
-                <b-form-group>
-                    <b-form-input v-model="changedOrder.count" placeholder="주문수량"></b-form-input>
-                </b-form-group>
-                <b-form-group>
-                    <b-form-input v-model="changedOrder.address" placeholder="배송지"></b-form-input>
-                </b-form-group>
-            </b-modal>
     </b-container>
 </div>
   
 </template>
 
 <script>
-import OrderApi from '../../api/OrderApi';
-import Order from '../../model/Order';
+import { OrderApi } from '@/api';
+import { Order } from '@/model';
 
 export default {
     name : 'order-list',
@@ -57,23 +48,9 @@ export default {
         })
     },
     methods : {
-        orderModifyBtnHandler : function(index){
-            this.index = index;
-        },
-        orderModifyHandler : function(){
-            //주문 수정
-            this.changedOrder.orderId = this.orders[this.index].orderId;
-            this.changedOrder.productId = this.orders[this.index].productId;
-            
-    
-        },
-        orderDeleteHandler : function(productId, orderId){
-           OrderApi.delete(productId, orderId)
-           .then(value => {
-               value.status === 200 ? alert('주문 취소가 완료되었습니다.') : alert('주문 취소를 실패하였습니다.');
-               this.$router.push('/order/list');
-           })
-        }
+       orderDetailHandler : function(orderId){
+           this.$router.push('/order/detail/'+orderId)
+       }
     }
 }
 </script>
