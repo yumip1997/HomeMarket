@@ -15,6 +15,7 @@
                 <b-navbar-nav class="ml-auto">
                     <b-navbar-nav>
                         <b-nav-item @click="handleClickMenu('selling')" v-if="IsLoggedIn">판매하기</b-nav-item>
+                        <b-nav-item @click="handleClickMenu('myproduct')" v-if="IsLoggedIn">나의 판매목록</b-nav-item>
                         <b-nav-item @click="handleClickMenu('myInfo')" v-if="IsLoggedIn">마이페이지</b-nav-item>
                         <b-nav-item @click="handleClickMenu('logout')" v-if="IsLoggedIn">로그아웃</b-nav-item>
                         <b-nav-item @click="handleClickMenu('register')" v-if="!IsLoggedIn">가입하기</b-nav-item>
@@ -59,6 +60,9 @@
                         break;
                     case 'selling' :
                         this.$router.push('/product/register');
+                        break;
+                    case 'myproduct' :
+                        this.$router.push('/product/myproduct');
                         break;
                     case 'myInfo' :
                         this.$router.push('/member/myInfo');

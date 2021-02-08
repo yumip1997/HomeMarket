@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.plateer.homemarket.entity.Product;
+import com.plateer.homemarket.service.dto.MyProductDto;
 import com.plateer.homemarket.store.mapper.ProductMapper;
 
 @Repository
@@ -69,7 +70,11 @@ public class ProductMariaStore implements ProductStore{
 		// TODO Auto-generated method stub
 		productMapper.delete(productId);
 	}
-	
-	
+
+	@Override
+	public List<MyProductDto> retrieveAllMyOrderedproduct(String memberId) {
+		// TODO Auto-generated method stub
+		return productMapper.retrieveAllMyorderedProduct(memberId);
+	}
 
 }

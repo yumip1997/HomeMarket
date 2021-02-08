@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.plateer.homemarket.entity.Product;
 import com.plateer.homemarket.service.ProductService;
+import com.plateer.homemarket.service.dto.MyProductDto;
 import com.plateer.homemarket.store.ProductStore;
 
 @Service
@@ -70,7 +71,12 @@ public class ProductServiceLogic implements ProductService{
 		// TODO Auto-generated method stub
 		productStore.delete(productId);
 	}
-	
+
+	@Override
+	public List<MyProductDto> findAllMyOrderedproduct(String memberId) {
+		// TODO Auto-generated method stub
+		return productStore.retrieveAllMyOrderedproduct(memberId);
+	}
 	
 	
 }

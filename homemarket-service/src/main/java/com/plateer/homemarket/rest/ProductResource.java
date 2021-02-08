@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.plateer.homemarket.entity.Product;
 import com.plateer.homemarket.service.ProductService;
+import com.plateer.homemarket.service.dto.MyProductDto;
 
 @RestController
 @RequestMapping("/product")
@@ -31,6 +32,11 @@ public class ProductResource {
 	@GetMapping("/retrieveAll")
 	public List<Product> findAll(){
 		return productService.findAll();
+	}
+	
+	@GetMapping("/retrieveOrderedProduct")
+	public List<MyProductDto> findAllOrderedProduct(@RequestParam String memberId){
+		return productService.findAllMyOrderedproduct(memberId);
 	}
 	
 	@GetMapping("/retrieveAllById")

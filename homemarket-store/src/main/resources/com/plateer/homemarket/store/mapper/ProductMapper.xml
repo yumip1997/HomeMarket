@@ -108,4 +108,18 @@ where
 delete from product
 where product_id = #{productId}
 </delete>
+
+<select id="retrieveAllMyorderedProduct" parameterType="String" resultType="com.plateer.homemarket.service.dto.MyProductDto">
+select
+	product_id as productId,
+	order_id as orderId,
+	product_name as productName,
+	seller,
+	buyer,
+	state,
+	stock,
+	count
+from myproduct
+where member_id = #{memberId}
+</select>
 </mapper>

@@ -30,7 +30,6 @@ public class MemberResource {
 		memberService.register(member);
 	}
 	
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/retrieveAll")
 	public List<Member> findAll(){
 		return memberService.findAll();

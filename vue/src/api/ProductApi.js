@@ -20,6 +20,12 @@ class PrdouctApi{
         {productId : productId})).data
         return data
     }
+
+    async findOrderedProduct(memberId){
+        const data = (await this.client.get('/retrieveOrderedProduct',
+        {memberId : memberId})).data
+        return data
+    }
 }
 
 const instance = new PrdouctApi();
