@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.plateer.homemarket.store.mapper.SecureMapper">
+
+
+<insert id="create" parameterType="com.plateer.homemarket.entity.CustomUser">
+	insert into customuser
+			(member_id, password, roles)
+	values (
+			#{memberId},
+			#{password},
+			#{roles, typeHandler=com.plateer.homemarket.store.handler.RolesTypeHandler}
+	)
+
+</insert>
+
+<resultMap id="user" type="com.plateer.homemarket.entity.CustomUser">
+<id property="memberId" column="member_id" />
+<result property="password" column="password" />
+<result property="roles" column="roles" typeHandler="com.plateer.homemarket.store.handler.RolesTypeHandler" />
+</resultMap>
+
+<select id="retrieve" resultMap="user">
+	select member_id as memberId,
+			password,
+			roles
+	from customuser
+	where member_id = #{memberId}
+</select>
+
+</mapper>

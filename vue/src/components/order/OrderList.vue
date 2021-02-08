@@ -1,11 +1,11 @@
 <template>
 <div>
-    <b-container id="orderArea">
+    <b-container id="orderArea" class="text-center">
         <h2>주문 목록</h2>
     </b-container>
 
     <b-container>
-        <table class="table table-hover">
+        <table class="table table-hover text-center">
             <th>주문 상품</th>
             <th>주문 수량</th>
             <th>주문 상태</th>
@@ -57,6 +57,7 @@ export default {
 
 <style>
 #orderArea {
-    margin : 30px
+    margin-top : 30px;
+    margin-bottom : 30px
 }
 </style>

@@ -7,7 +7,7 @@
 
             <b-collapse id="nav-collapse" is-nav="is-nav">
                 <b-navbar-nav>
-                    <b-nav-item @click="handleClickMenu('shopping')">쇼핑하기</b-nav-item>
+                    <b-nav-item @click="handleClickMenu('shopping')" v-if="IsLoggedIn">쇼핑하기</b-nav-item>
                     <b-nav-item @click="handleClickMenu('order')" v-if="IsLoggedIn">나의 주문 목록</b-nav-item>
                 </b-navbar-nav>
 

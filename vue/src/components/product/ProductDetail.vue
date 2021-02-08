@@ -18,12 +18,12 @@
                 {{product.price}}
             </b-card-text>
             <b-card-text>
-                설명 :
+                상세 설명 :
                 {{product.productDetail}}
             </b-card-text>
             <b-card-text>
             </b-card-text>
-            <b-button v-b-modal.order-modal>
+            <b-button class="m-2" v-b-modal.order-modal>
                 주문하기
             </b-button>
             <b-modal id="order-modal" title=주문하기 @ok="orderRegisterHandler(product.productId, product.productName)">
@@ -60,7 +60,8 @@ export default {
         orderRegisterHandler : function(productId, productName){
             this.makeOrder(productId, productName)
             OrderApi.register(this.order)
-            .then(value => { value.status === 200 ? alert('주문이 완료되었습니다.') : alert('주문을 실패하였습니다')
+            .then(value => {
+                console.log(value)
             });
         },
         makeOrder : function(productId, productName){

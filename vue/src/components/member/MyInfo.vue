@@ -33,8 +33,8 @@
     
     <b-container>
         <b-row align-h="end">
-            <b-col cols="2"><b-button type="button" @click="modify">수정하기</b-button></b-col>
-            <b-col cols="2"> <b-button type="button" @click="remove">삭제하기</b-button></b-col>
+            <b-button type="button" @click="modify">수정하기</b-button>
+            <b-button type="button" @click="remove">삭제하기</b-button>
         </b-row>
     </b-container>
   </div>
