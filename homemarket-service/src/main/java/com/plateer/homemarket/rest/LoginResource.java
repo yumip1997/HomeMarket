@@ -18,10 +18,8 @@ public class LoginResource {
 		this.loginService = loginService;
 	}
 	
-	
 	@PostMapping("/loginCheck")
 	public boolean login(@RequestBody UserDto userDto) {
-		System.out.println("로그인...");
 		return loginService.findByIdPw(userDto.getMemberId(), userDto.getPassword());
 	}
 

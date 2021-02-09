@@ -27,12 +27,11 @@ public class OrderServiceLogic implements OrderService{
 		// TODO Auto-generated method stub
 		Product product =productStore.retreive(order.getProductId());
 		int nextQuantity = product.getQuantity() - order.getCount();
-		if(nextQuantity <= 0) throw new OutofStockException("We are out of stock!");
+		if(nextQuantity <= 0) throw new OutofStockException("재고가 부족합니다!");
 		
 		orderStore.create(order);
 		product.setQuantity(nextQuantity);
 		productStore.update(product);
-		
 	}
 	
 	@Override

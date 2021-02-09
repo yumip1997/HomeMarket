@@ -5,7 +5,6 @@ class OrderApi{
         this.client = new AxiosClient('/order')
     }
 
-
     async register(order){
         return this.client.post('/create',order)
     }

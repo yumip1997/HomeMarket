@@ -7,11 +7,11 @@ import com.plateer.homemarket.entity.Member;
 
 public interface MemberService {
 	
-	public void register(Member member);
-	public List<Member> findAll();
-	public Member findById(String memberId);
-	public List<Member> findByName(String name);
-	public void modify(Member member);
-	public void remove(String memberId);
+	void register(Member member);
+	List<Member> findAll();
+	Member findById(String memberId);
+	List<Member> findByName(String name);
+	void modify(Member member);
+	void remove(String memberId);
 
 }

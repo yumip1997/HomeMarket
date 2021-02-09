@@ -58,6 +58,7 @@ export default {
         return {
             order : new Order(),
             changedOrder : new Order(),
+            status : null,
         }
     },
     mounted : function(){
@@ -72,6 +73,7 @@ export default {
         orderModifyHandler : function(orderId){
             this.changedOrder.productId = this.order.productId
             this.changedOrder.orderId = orderId
+           
             OrderApi.modify(this.changedOrder)
             .then(value =>
             {
@@ -88,7 +90,7 @@ export default {
             .then(value => 
             {
                 if(value.status === 200){
-                    alert('주문변경 완료되었습니다.')
+                    alert('주문 변경 완료되었습니다.')
                     this.$router.push('/order/list')
                 }else{
                     alert('주문 변경이 실패되었습니다.')

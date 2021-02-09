@@ -61,7 +61,11 @@ export default {
             this.makeOrder(productId, productName)
             OrderApi.register(this.order)
             .then(value => {
-                console.log(value)
+                if(value.data.message){
+                    alert(value.data.message)
+                }else{
+                    this.$router.push('/product/list')
+                }
             });
         },
         makeOrder : function(productId, productName){
