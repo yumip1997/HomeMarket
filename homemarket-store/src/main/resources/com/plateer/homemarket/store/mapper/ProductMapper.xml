@@ -120,6 +120,6 @@ select
 	stock,
 	count
 from myproduct
-where member_id = #{memberId}
+where seller = #{seller}
 </select>
 </mapper>

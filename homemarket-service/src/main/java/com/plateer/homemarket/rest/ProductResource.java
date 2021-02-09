@@ -35,8 +35,8 @@ public class ProductResource {
 	}
 	
 	@GetMapping("/retrieveOrderedProduct")
-	public List<MyProductDto> findAllOrderedProduct(@RequestParam String memberId){
-		return productService.findAllMyOrderedproduct(memberId);
+	public List<MyProductDto> findAllOrderedProduct(@RequestParam String seller){
+		return productService.findAllMyOrderedproduct(seller);
 	}
 	
 	@GetMapping("/retrieveAllById")

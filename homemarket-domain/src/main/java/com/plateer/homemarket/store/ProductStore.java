@@ -12,7 +12,7 @@ public interface ProductStore {
 	public void create(Product product);
 	
 	public List<Product> retrieveAll();
-	public List<MyProductDto> retrieveAllMyOrderedproduct(String memberId);
+	public List<MyProductDto> retrieveAllMyOrderedproduct(String seller);
 	public List<Product> retrieveAllByMemberId(String memberId);
 	public List<Product> retrieveByCategories(String categories);
 	public List<Product> retrieveByName(String productName);

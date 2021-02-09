@@ -12,6 +12,7 @@
             <th>주문자</th>
             <th>재고</th>
             <th>주문 수량</th>
+            <th>주문 상태</th>
             <tr v-for="orderedProduct in orderedProducts" v-bind:key="orderedProduct.index">
                 <td>{{orderedProduct.productId}}</td>
                 <td>{{orderedProduct.orderId}}</td>
@@ -19,6 +20,7 @@
                 <td>{{orderedProduct.buyer}}</td>
                 <td>{{orderedProduct.stock}}</td>
                 <td>{{orderedProduct.count}}</td>
+                <td>{{orderedProduct.state}}</td>
                
             </tr>
         </table>
@@ -28,12 +30,13 @@
 
 <script>
 import {ProductApi} from '@/api'
-import {MyProduct} from '@/model'
+//import {MyProduct} from '@/model'
+
 export default {
     name : 'ordered-product-list',
     data : function(){
         return {
-            orderedProducts : new MyProduct(),
+            orderedProducts : {},
         }
     },
     mounted : function(){

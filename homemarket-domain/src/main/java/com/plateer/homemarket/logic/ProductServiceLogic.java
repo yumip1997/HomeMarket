@@ -73,9 +73,9 @@ public class ProductServiceLogic implements ProductService{
 	}
 
 	@Override
-	public List<MyProductDto> findAllMyOrderedproduct(String memberId) {
+	public List<MyProductDto> findAllMyOrderedproduct(String seller) {
 		// TODO Auto-generated method stub
-		return productStore.retrieveAllMyOrderedproduct(memberId);
+		return productStore.retrieveAllMyOrderedproduct(seller);
 	}
 	
 	

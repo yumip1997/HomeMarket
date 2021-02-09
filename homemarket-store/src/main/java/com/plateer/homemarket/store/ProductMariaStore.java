@@ -72,9 +72,9 @@ public class ProductMariaStore implements ProductStore{
 	}
 
 	@Override
-	public List<MyProductDto> retrieveAllMyOrderedproduct(String memberId) {
+	public List<MyProductDto> retrieveAllMyOrderedproduct(String seller) {
 		// TODO Auto-generated method stub
-		return productMapper.retrieveAllMyorderedProduct(memberId);
+		return productMapper.retrieveAllMyorderedProduct(seller);
 	}
 
 }

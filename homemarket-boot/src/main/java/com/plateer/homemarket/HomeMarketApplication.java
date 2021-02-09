@@ -32,29 +32,29 @@ public class HomeMarketApplication {
 		SpringApplication.run(HomeMarketApplication.class, args);
 	}
 	
-	@Bean
-	public Docket docket() {
-		return new Docket(DocumentationType.SWAGGER_2)
-				.forCodeGeneration(true)
-				.globalOperationParameters(globalParameterList())
-				.select()
-				.apis( RequestHandlerSelectors.withClassAnnotation(RestController.class))
-				.paths(PathSelectors.any())
-				.build();
-	}
-
-	private List<Parameter> globalParameterList() {
-
-		val authTokenHeader =
-				new ParameterBuilder()
-						.name("AUTH-TOKEN") // name of the header
-						.modelRef(new ModelRef("string")) // data-type of the header
-						.required(true) // required/optional
-						.parameterType("header") // for query-param, this value can be 'query'
-						.description("auth token")
-						.build();
-
-		return Collections.singletonList(authTokenHeader);
-	}
+//	@Bean
+//	public Docket docket() {
+//		return new Docket(DocumentationType.SWAGGER_2)
+//				.forCodeGeneration(true)
+//				.globalOperationParameters(globalParameterList())
+//				.select()
+//				.apis( RequestHandlerSelectors.withClassAnnotation(RestController.class))
+//				.paths(PathSelectors.any())
+//				.build();
+//	}
+//
+//	private List<Parameter> globalParameterList() {
+//
+//		val authTokenHeader =
+//				new ParameterBuilder()
+//						.name("AUTH-TOKEN") // name of the header
+//						.modelRef(new ModelRef("string")) // data-type of the header
+//						.required(true) // required/optional
+//						.parameterType("header") // for query-param, this value can be 'query'
+//						.description("auth token")
+//						.build();
+//
+//		return Collections.singletonList(authTokenHeader);
+//	}
 
 }

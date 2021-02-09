@@ -45,6 +45,7 @@ export default {
         login : function(){
              LoginApi.login(this.memberId, this.password)
              .then(data => {
+                 console.log('하하하');
                  this.check = data;
                  this.loginCheck();
              });

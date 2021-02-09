@@ -23,7 +23,7 @@ class PrdouctApi{
 
     async findOrderedProduct(memberId){
         const data = (await this.client.get('/retrieveOrderedProduct',
-        {memberId : memberId})).data
+        {seller : memberId})).data
         return data
     }
 }

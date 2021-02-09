@@ -11,7 +11,7 @@ public class MyProductDto {
 	
 	private int productId;
 	private int orderId;
-	private String productNmae;
+	private String productName;
 	private String seller;
 	private String buyer;
 	private String state;
