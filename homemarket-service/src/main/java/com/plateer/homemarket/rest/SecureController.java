@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/public")
-public class SecureResource {
+public class SecureController {
 	
 	private final SecureService secureService;
 	

@@ -8,11 +8,11 @@ import com.plateer.homemarket.entity.Member;
 import com.plateer.homemarket.store.mapper.MemberMapper;
 
 @Repository
-public class MemberMariaStore implements MemberStore{
+public class MemberRepository implements MemberStore{
 
 	private final MemberMapper memberMapper;
 	
-	public MemberMariaStore(MemberMapper memberMapper){
+	public MemberRepository(MemberMapper memberMapper){
 		this.memberMapper = memberMapper;
 	}
 
@@ -20,7 +20,6 @@ public class MemberMariaStore implements MemberStore{
 	public void create(Member member) {
 		// TODO Auto-generated method stub
 		memberMapper.create(member);
-		
 	}
 
 	@Override

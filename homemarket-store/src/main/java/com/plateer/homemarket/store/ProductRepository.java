@@ -9,11 +9,11 @@ import com.plateer.homemarket.service.dto.MyProductDto;
 import com.plateer.homemarket.store.mapper.ProductMapper;
 
 @Repository
-public class ProductMariaStore implements ProductStore{
+public class ProductRepository implements ProductStore{
 	
 	private final ProductMapper productMapper;
 	
-	public ProductMariaStore(ProductMapper productMapper){
+	public ProductRepository(ProductMapper productMapper){
 		this.productMapper = productMapper;
 	}
 	

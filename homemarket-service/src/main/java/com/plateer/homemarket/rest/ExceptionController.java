@@ -8,7 +8,7 @@ import com.plateer.homemarket.service.dto.ExceptionDto;
 
 
 @RestControllerAdvice
-public class ExceptionResource {
+public class ExceptionController {
 	@ExceptionHandler(OutofStockException.class)
 	public ExceptionDto stockError(OutofStockException e){
 		ExceptionDto exceptionDto = new ExceptionDto("재고부족", e.getMessage());

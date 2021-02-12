@@ -17,11 +17,11 @@ import com.plateer.homemarket.service.MemberService;
 
 @RestController
 @RequestMapping("/member")
-public class MemberResource {
+public class MemberController {
 	
 	private final MemberService memberService;
 	
-	MemberResource(MemberService memberService){
+	MemberController(MemberService memberService){
 		this.memberService = memberService;
 	}
 	

@@ -16,11 +16,11 @@ import com.plateer.homemarket.service.OrderService;
 
 @RestController
 @RequestMapping("/order")
-public class OrderResource {
+public class OrderController {
 	
 	private final OrderService orderService;
 	
-	public OrderResource(OrderService orderService) {
+	public OrderController(OrderService orderService) {
 		this.orderService = orderService;
 	}
 	

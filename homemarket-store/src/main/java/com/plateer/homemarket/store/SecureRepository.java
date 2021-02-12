@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 
 @Repository
 @RequiredArgsConstructor
-public class SecureMariaStore implements SecureStore{
+public class SecureRepository implements SecureStore{
 	
 	private final SecureMapper secureMapper;
 

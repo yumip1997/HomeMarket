@@ -16,11 +16,11 @@ import com.plateer.homemarket.service.dto.MyProductDto;
 
 @RestController
 @RequestMapping("/product")
-public class ProductResource {
+public class ProductController {
 	
 	private final ProductService productService;
 	
-	public ProductResource(ProductService productService){
+	public ProductController(ProductService productService){
 		this.productService = productService;
 	}
 	

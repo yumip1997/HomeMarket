@@ -12,7 +12,7 @@
 			#{name},
 			#{password},
 			#{email},
-			#{address}
+			#{address, typeHandler=com.plateer.homemarket.store.handler.AddressTypeHandler}
 		)
 </insert>
 
@@ -22,7 +22,7 @@
 			email, 
 			address, 
 			join_date as joinDate, 
-			auth
+			authority
 	from member
 </select>
 
@@ -32,7 +32,7 @@
 			email, 
 			address, 
 			join_date as joinDate, 
-			auth
+			authority
 	from member
 	where member_id = #{memberId}
 </select>
@@ -43,7 +43,7 @@
 			email, 
 			address, 
 			join_date as joinDate, 
-			auth
+			authority
 	from member
 	where name = #{name}
 </select>

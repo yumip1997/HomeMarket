@@ -1,5 +1,9 @@
 package com.plateer.homemarket.entity;
 
+import java.util.List;
+
+import com.plateer.homemarket.entity.enumType.Authority;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,8 +17,8 @@ public class Member {
 	private String name;
 	private String password;
 	private String email;
-	private String address;
 	private String joinDate;
-	private String auth;
+	private List<Address> address;
+	private Authority authority;
 
 }

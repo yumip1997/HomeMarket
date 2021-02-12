@@ -10,11 +10,11 @@ import com.plateer.homemarket.service.dto.UserDto;
 
 @RestController
 @RequestMapping("/login")
-public class LoginResource {
+public class LoginController {
 	
 	private final LoginService loginService;
 	
-	public LoginResource(LoginService loginService) {
+	public LoginController(LoginService loginService) {
 		this.loginService = loginService;
 	}
 	

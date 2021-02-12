@@ -8,11 +8,11 @@ import com.plateer.homemarket.entity.Order;
 import com.plateer.homemarket.store.mapper.OrderMapper;
 
 @Repository
-public class OrderMariaStore implements OrderStore{
+public class OrderRepository implements OrderStore{
 	
 	private final OrderMapper orderMapper;
 	
-	public OrderMariaStore(OrderMapper orderMapper) {
+	public OrderRepository(OrderMapper orderMapper) {
 		this.orderMapper = orderMapper;
 	}
 	
