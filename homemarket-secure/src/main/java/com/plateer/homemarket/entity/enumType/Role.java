@@ -1,8 +1,8 @@
 package com.plateer.homemarket.entity.enumType;
 
-public enum Authority {
+public enum Role {
 	
 	ROLE_USER,
-	ROLE_ADMIN,
+	ROLE_ADMIN
 
 }

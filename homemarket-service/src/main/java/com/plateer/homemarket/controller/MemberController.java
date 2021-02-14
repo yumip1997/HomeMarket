@@ -1,4 +1,4 @@
-package com.plateer.homemarket.rest;
+package com.plateer.homemarket.controller;
 
 import java.util.List;
 
@@ -26,7 +26,7 @@ public class MemberController {
 	}
 	
 	@PostMapping("/create")
-	public void register(@RequestBody Member member) {
+	public void register(@RequestBody Member member) {	
 		memberService.register(member);
 	}
 	

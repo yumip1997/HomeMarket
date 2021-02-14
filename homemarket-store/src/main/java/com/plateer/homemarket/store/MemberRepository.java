@@ -5,17 +5,18 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.plateer.homemarket.entity.Member;
+import com.plateer.homemarket.service.LoginService;
+import com.plateer.homemarket.service.dto.UserDto;
 import com.plateer.homemarket.store.mapper.MemberMapper;
 
+import lombok.RequiredArgsConstructor;
+
 @Repository
+@RequiredArgsConstructor
 public class MemberRepository implements MemberStore{
 
 	private final MemberMapper memberMapper;
 	
-	public MemberRepository(MemberMapper memberMapper){
-		this.memberMapper = memberMapper;
-	}
-
 	@Override
 	public void create(Member member) {
 		// TODO Auto-generated method stub
@@ -53,8 +54,9 @@ public class MemberRepository implements MemberStore{
 	}
 
 	@Override
-	public boolean retireveByIdPw(String memberId, String password) {
+	public UserDto retrieveByIdForLogin(String memberId) {
 		// TODO Auto-generated method stub
-		return memberMapper.retrieveByIdPw(memberId, password);
+		return memberMapper.retrieveByIdForLogin(memberId);
 	}
+	
 }

@@ -4,6 +4,7 @@ package com.plateer.homemarket.store;
 import java.util.List;
 
 import com.plateer.homemarket.entity.Member;
+import com.plateer.homemarket.service.dto.UserDto;
 
 public interface MemberStore {
 	
@@ -14,5 +15,6 @@ public interface MemberStore {
 	public void modify(Member member);
 	public void remove(String memberId);
 	
-	public boolean retireveByIdPw(String memberId, String password);
+	public UserDto retrieveByIdForLogin(String memberId);
+	
 }

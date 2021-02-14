@@ -28,15 +28,15 @@ public class SecureService {
 		secureStore.create(customUser);
 	}
 	
-	public String Login(CustomUser customUser) {
-		
-		//user : DB에서 가져온 user
-		CustomUser user  = Optional.ofNullable(secureStore.retrieve(customUser.getMemberId()))
-				.orElseThrow(() -> new UsernameNotFoundException("No Such MemberId with --->" + customUser.getMemberId()));
-		if(!passwordEncoder.matches(customUser.getPassword(), user.getPassword())) {
-			throw new IllegalArgumentException("Password not correct");
-		}
-		
-		return jwtUtil.createAccessToken(user.getUsername(), user.getRoles());
-	}
+//	public String Login(CustomUser customUser) {
+//		
+//		//user : DB에서 가져온 user
+//		CustomUser user  = Optional.ofNullable(secureStore.retrieve(customUser.getMemberId()))
+//				.orElseThrow(() -> new UsernameNotFoundException("No Such MemberId with --->" + customUser.getMemberId()));
+//		if(!passwordEncoder.matches(customUser.getPassword(), user.getPassword())) {
+//			throw new IllegalArgumentException("Password not correct");
+//		}
+//		
+//		return jwtUtil.createAccessToken(user.getUsername(), user.getRoles());
+//	}
 }

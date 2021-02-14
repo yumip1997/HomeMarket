@@ -1,4 +1,4 @@
-package com.plateer.homemarket.rest;
+package com.plateer.homemarket.controller;
 
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;

@@ -3,24 +3,30 @@ package com.plateer.homemarket.logic;
 
 import java.util.List;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.plateer.homemarket.entity.Member;
+import com.plateer.homemarket.entity.enumType.Role;
 import com.plateer.homemarket.service.MemberService;
 import com.plateer.homemarket.store.MemberStore;
+import com.plateer.homemarket.util.JwtUtil;
+
+import lombok.RequiredArgsConstructor;
 
 @Service
+@RequiredArgsConstructor
 public class MemberServiceLogic implements MemberService{
 	
 	private final MemberStore memberStore;
-	
-	public MemberServiceLogic(MemberStore memberStore) {
-		this.memberStore = memberStore;
-	}
+	private final PasswordEncoder passwordEncoder;
+	private final JwtUtil jwtUtil;
 	
 	@Override
 	public void register(Member member) {
 		// TODO Auto-generated method stub
+		member.setPassword(passwordEncoder.encode(member.getPassword()));
+		member.getRoles().add(Role.ROLE_USER);
 		memberStore.create(member);
 	}
 

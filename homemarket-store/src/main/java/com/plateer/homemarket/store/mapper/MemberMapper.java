@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.plateer.homemarket.entity.Member;
+import com.plateer.homemarket.service.dto.UserDto;
 
 @Mapper
 public interface MemberMapper {
@@ -16,5 +17,5 @@ public interface MemberMapper {
 	public void update(Member member);
 	public void delete(String memberId);
 	
-	public boolean retrieveByIdPw(String memberId, String password);
+	public UserDto retrieveByIdForLogin(String memberId);
 }

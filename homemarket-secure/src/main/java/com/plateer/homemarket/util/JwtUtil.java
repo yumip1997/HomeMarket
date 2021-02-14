@@ -16,6 +16,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 
+import com.plateer.homemarket.entity.enumType.Role;
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -41,7 +43,7 @@ public class JwtUtil {
 	}
 	
 	//JWT 토큰 생성
-	public String createAccessToken(String user, List<String> roles) {
+	public String createAccessToken(String user, List<Role> roles) {
 		Claims claims = Jwts.claims().setSubject(user);
 		claims.put("roles", roles);
 		Date now = new Date();

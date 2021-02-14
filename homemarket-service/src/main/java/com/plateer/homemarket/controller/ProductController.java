@@ -1,4 +1,4 @@
-package com.plateer.homemarket.rest;
+package com.plateer.homemarket.controller;
 
 import java.util.List;
 

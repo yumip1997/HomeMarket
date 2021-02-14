@@ -3,58 +3,78 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.plateer.homemarket.store.mapper.MemberMapper">
-<insert id="create" parameterType="com.plateer.homemarket.entity.Member">
+
+<resultMap id="member" type="Member">
+<id property="memberId" column="member_id" />
+<result property="name" column="name" />
+<result property="email" column="email" />
+<result property="addresses" column="addresses" typeHandler="AddressTypeHandler" />
+<result property="roles" column="roles" typeHandler="RoleTypeHandler" />
+<result property="joinDate" column="joinDate" />
+</resultMap>
+
+<resultMap id="userForLogin" type="UserDto">
+<id property="memberId" column="member_id" />
+<result property="password" column="password" />
+<result property="roles" column="roles" typeHandler="RoleTypeHandler" />
+</resultMap>
+
+<insert id="create" parameterType="Member">
 	insert into member
-		(member_id, name, password, email, address)
+		(member_id, name, password, email, addresses, roles)
 	values
 		(
 			#{memberId},
 			#{name},
 			#{password},
 			#{email},
-			#{address, typeHandler=com.plateer.homemarket.store.handler.AddressTypeHandler}
+			#{addresses, typeHandler=AddressTypeHandler},
+			#{roles, typeHandler=RoleTypeHandler}
 		)
 </insert>
 
-<select id="retrieveAll" resultType="com.plateer.homemarket.entity.Member">
-	select member_id as memberId, 
+<select id="retrieveAll" resultMap="member">
+	select 
+			member_id as memberId, 
 			name, 
 			email, 
-			address, 
+			addresses, 
 			join_date as joinDate, 
-			authority
+			roles
 	from member
 </select>
 
-<select id="retrieveById" parameterType="String" resultType="com.plateer.homemarket.entity.Member">
-	select member_id as memberId, 
+<select id="retrieveById" parameterType="String" resultMap="member">
+	select
+			member_id as memberId, 
 			name, 
 			email, 
 			address, 
 			join_date as joinDate, 
-			authority
+			roles
 	from member
 	where member_id = #{memberId}
 </select>
 
-<select id="retrieveByName" parameterType="String" resultType="java.util.List">
-	select member_id as memberId, 
+<select id="retrieveByName" parameterType="String" resultMap="member">
+	select 
+			member_id as memberId, 
 			name, 
 			email, 
 			address, 
 			join_date as joinDate, 
-			authority
+			roles
 	from member
 	where name = #{name}
 </select>
 
-<update id="update" parameterType="com.plateer.homemarket.entity.Member">
+<update id="update" parameterType="Member">
 	update member
 	set
 		name = #{name},
 		password = #{password},
 		email = #{email},
-		address = #{address}
+		address = #{address, typeHandler=AddressTypeHandler}
 	where
 		member_id = #{memberId}
 </update>
@@ -63,10 +83,12 @@
 	delete from member where member_id = #{memberId}
 </delete>
 
-<select id="retrieveByIdPw" resultType="Boolean">
-	select if(count(*) = 1, 'true', 'false')
+<select id="retrieveByIdForLogin" resultMap="userForLogin">
+	select
+			member_id as memberId,
+			password,
+			roles
 	from member
-	where member_id=#{memberId} and password=#{password}
 </select>
 
 </mapper>
