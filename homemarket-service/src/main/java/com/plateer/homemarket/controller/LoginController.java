@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.plateer.homemarket.entity.Member;
 import com.plateer.homemarket.service.LoginService;
 import com.plateer.homemarket.service.dto.UserDto;
 
@@ -20,7 +19,7 @@ public class LoginController {
 	
 	@PostMapping("/loginCheck")
 	public String login(@RequestBody UserDto userDto) {
-		return loginService.findByIdPw(userDto);
+		return loginService.findByIdForLogin(userDto);
 	}
 
 }

@@ -22,8 +22,8 @@ public class SecureController {
 		secureService.join(customUser);
 	}
 	
-	@PostMapping("/login")
-	public String login(@RequestBody CustomUser customUser) {
-		return secureService.Login(customUser);
-	}
+//	@PostMapping("/login")
+//	public String login(@RequestBody CustomUser customUser) {
+//		return secureService.Login(customUser);
+//	}
 }

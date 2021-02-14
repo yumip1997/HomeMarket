@@ -14,7 +14,7 @@
 </resultMap>
 
 <resultMap id="userForLogin" type="UserDto">
-<id property="memberId" column="member_id" />
+<result property="memberId" column="member_id" />
 <result property="password" column="password" />
 <result property="roles" column="roles" typeHandler="RoleTypeHandler" />
 </resultMap>
@@ -35,7 +35,7 @@
 
 <select id="retrieveAll" resultMap="member">
 	select 
-			member_id as memberId, 
+			member_id, 
 			name, 
 			email, 
 			addresses, 
@@ -46,7 +46,7 @@
 
 <select id="retrieveById" parameterType="String" resultMap="member">
 	select
-			member_id as memberId, 
+			member_id, 
 			name, 
 			email, 
 			address, 
@@ -58,7 +58,7 @@
 
 <select id="retrieveByName" parameterType="String" resultMap="member">
 	select 
-			member_id as memberId, 
+			member_id, 
 			name, 
 			email, 
 			address, 
@@ -79,16 +79,17 @@
 		member_id = #{memberId}
 </update>
 
-<delete id="delete" parameterType="string">
+<delete id="delete" parameterType="String">
 	delete from member where member_id = #{memberId}
 </delete>
 
-<select id="retrieveByIdForLogin" resultMap="userForLogin">
+<select id="retrieveByIdForLogin" parameterType="String" resultMap="userForLogin">
 	select
-			member_id as memberId,
+			member_id,
 			password,
 			roles
 	from member
+	where member_id = #{memberId}
 </select>
 
 </mapper>

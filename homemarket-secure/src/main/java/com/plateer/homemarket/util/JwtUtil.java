@@ -45,6 +45,7 @@ public class JwtUtil {
 	//JWT 토큰 생성
 	public String createAccessToken(String user, List<Role> roles) {
 		Claims claims = Jwts.claims().setSubject(user);
+		claims.put("memberId", user);
 		claims.put("roles", roles);
 		Date now = new Date();
 		

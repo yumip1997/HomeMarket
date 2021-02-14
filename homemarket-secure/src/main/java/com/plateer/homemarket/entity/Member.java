@@ -18,8 +18,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Member implements UserDetails{
-	
-	
+
 	private String memberId;
 	private String name;
 	private String password;
