@@ -1,4 +1,4 @@
-package com.plateer.homemarket.store.mapper;
+package com.plateer.homemarket.repository.mapper;
 
 
 import java.util.List;

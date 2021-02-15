@@ -17,9 +17,9 @@
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		
-		<dependency>
+			<dependency>
 			<groupId>com.plateer</groupId>
-			<artifactId>homemarket-store</artifactId>
+			<artifactId>homemarket-repository</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		

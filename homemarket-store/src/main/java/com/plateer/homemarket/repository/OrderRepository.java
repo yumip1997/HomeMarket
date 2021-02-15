@@ -1,11 +1,12 @@
-package com.plateer.homemarket.store;
+package com.plateer.homemarket.repository;
 
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
 import com.plateer.homemarket.entity.Order;
-import com.plateer.homemarket.store.mapper.OrderMapper;
+import com.plateer.homemarket.repository.mapper.OrderMapper;
+import com.plateer.homemarket.store.OrderStore;
 
 @Repository
 public class OrderRepository implements OrderStore{

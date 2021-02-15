@@ -7,7 +7,7 @@
 		<artifactId>HomeMarket</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>homemarket-store</artifactId>
+	<artifactId>homemarket-repository</artifactId>
 
 	<dependencies>
 		<dependency>

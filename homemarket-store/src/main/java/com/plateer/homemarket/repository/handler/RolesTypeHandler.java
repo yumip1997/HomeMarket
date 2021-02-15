@@ -1,4 +1,4 @@
-package com.plateer.homemarket.store.handler;
+package com.plateer.homemarket.repository.handler;
 
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;

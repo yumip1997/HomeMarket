@@ -1,4 +1,4 @@
-package com.plateer.homemarket.logic;
+package com.plateer.homemarket.serviceImpl;
 
 import java.util.Optional;
 
@@ -15,7 +15,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class LoginServiceLogic implements LoginService{
+public class LoginServiceImpl implements LoginService{
 	
 	private final MemberStore memberStore;
 	private final PasswordEncoder passwordEncoder;

@@ -14,15 +14,14 @@ import com.plateer.homemarket.entity.Product;
 import com.plateer.homemarket.service.ProductService;
 import com.plateer.homemarket.service.dto.MyProductDto;
 
+import lombok.RequiredArgsConstructor;
+
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/product")
 public class ProductController {
 	
 	private final ProductService productService;
-	
-	public ProductController(ProductService productService){
-		this.productService = productService;
-	}
 	
 	@PostMapping("/create")
 	public void register(@RequestBody Product product) {

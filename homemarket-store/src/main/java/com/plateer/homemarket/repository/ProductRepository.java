@@ -1,12 +1,13 @@
-package com.plateer.homemarket.store;
+package com.plateer.homemarket.repository;
 
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
 import com.plateer.homemarket.entity.Product;
+import com.plateer.homemarket.repository.mapper.ProductMapper;
 import com.plateer.homemarket.service.dto.MyProductDto;
-import com.plateer.homemarket.store.mapper.ProductMapper;
+import com.plateer.homemarket.store.ProductStore;
 
 @Repository
 public class ProductRepository implements ProductStore{

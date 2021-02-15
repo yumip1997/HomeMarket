@@ -1,4 +1,4 @@
-package com.plateer.homemarket.logic;
+package com.plateer.homemarket.serviceImpl;
 
 import java.util.List;
 
@@ -9,15 +9,14 @@ import com.plateer.homemarket.service.ProductService;
 import com.plateer.homemarket.service.dto.MyProductDto;
 import com.plateer.homemarket.store.ProductStore;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
-public class ProductServiceLogic implements ProductService{
+@RequiredArgsConstructor
+public class ProductServiceImpl implements ProductService{
 	
 	private final ProductStore productStore;
-	
-	public ProductServiceLogic(ProductStore productStore) {
-		this.productStore = productStore;
-	}
-	
+
 	@Override
 	public void register(Product product) {
 		// TODO Auto-generated method stub

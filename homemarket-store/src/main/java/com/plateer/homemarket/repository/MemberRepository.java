@@ -1,13 +1,14 @@
-package com.plateer.homemarket.store;
+package com.plateer.homemarket.repository;
 
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
 import com.plateer.homemarket.entity.Member;
+import com.plateer.homemarket.repository.mapper.MemberMapper;
 import com.plateer.homemarket.service.LoginService;
 import com.plateer.homemarket.service.dto.UserDto;
-import com.plateer.homemarket.store.mapper.MemberMapper;
+import com.plateer.homemarket.store.MemberStore;
 
 import lombok.RequiredArgsConstructor;
 

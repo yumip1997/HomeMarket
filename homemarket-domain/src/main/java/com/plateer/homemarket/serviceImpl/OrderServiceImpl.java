@@ -1,4 +1,4 @@
-package com.plateer.homemarket.logic;
+package com.plateer.homemarket.serviceImpl;
 
 import java.util.List;
 
@@ -11,16 +11,14 @@ import com.plateer.homemarket.service.OrderService;
 import com.plateer.homemarket.store.OrderStore;
 import com.plateer.homemarket.store.ProductStore;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
-public class OrderServiceLogic implements OrderService{
+@RequiredArgsConstructor
+public class OrderServiceImpl implements OrderService{
 	
 	private final OrderStore orderStore;
 	private final ProductStore productStore;
-	
-	public OrderServiceLogic(OrderStore orderStore, ProductStore productStore) {
-		this.orderStore = orderStore;
-		this.productStore = productStore;
-	}
 	
 	@Override
 	public void register(Order order) {

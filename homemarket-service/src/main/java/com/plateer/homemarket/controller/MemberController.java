@@ -15,15 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.plateer.homemarket.entity.Member;
 import com.plateer.homemarket.service.MemberService;
 
+import lombok.RequiredArgsConstructor;
+
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/member")
 public class MemberController {
 	
 	private final MemberService memberService;
-	
-	MemberController(MemberService memberService){
-		this.memberService = memberService;
-	}
 	
 	@PostMapping("/create")
 	public void register(@RequestBody Member member) {	

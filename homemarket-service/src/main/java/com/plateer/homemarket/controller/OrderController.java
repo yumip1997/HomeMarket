@@ -14,15 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.plateer.homemarket.entity.Order;
 import com.plateer.homemarket.service.OrderService;
 
+import lombok.RequiredArgsConstructor;
+
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/order")
 public class OrderController {
 	
 	private final OrderService orderService;
-	
-	public OrderController(OrderService orderService) {
-		this.orderService = orderService;
-	}
 	
 	@PostMapping("/create")
 	public void register(@RequestBody Order order) {

@@ -1,9 +1,10 @@
-package com.plateer.homemarket.store;
+package com.plateer.homemarket.repository;
 
 import org.springframework.stereotype.Repository;
 
 import com.plateer.homemarket.entity.CustomUser;
-import com.plateer.homemarket.store.mapper.SecureMapper;
+import com.plateer.homemarket.repository.mapper.SecureMapper;
+import com.plateer.homemarket.store.SecureStore;
 
 import lombok.RequiredArgsConstructor;
 
