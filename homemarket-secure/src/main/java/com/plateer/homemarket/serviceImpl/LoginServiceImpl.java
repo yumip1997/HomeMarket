@@ -7,6 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.plateer.homemarket.service.LoginService;
+import com.plateer.homemarket.service.dto.JwtDto;
 import com.plateer.homemarket.service.dto.UserDto;
 import com.plateer.homemarket.store.MemberStore;
 import com.plateer.homemarket.util.JwtUtil;
@@ -22,7 +23,7 @@ public class LoginServiceImpl implements LoginService{
 	private final JwtUtil jwtUtil;
 	
 	@Override
-	public String findByIdForLogin(UserDto userDto) {
+	public JwtDto findByIdForLogin(UserDto userDto) {
 		// TODO Auto-generated method stub
 		UserDto realUser = Optional.ofNullable(memberStore.retrieveByIdForLogin(userDto.getMemberId()))
 				.orElseThrow(() -> new UsernameNotFoundException("No Such Member with : " + userDto.getMemberId()));
@@ -30,9 +31,9 @@ public class LoginServiceImpl implements LoginService{
 		if(!passwordEncoder.matches(userDto.getPassword(), realUser.getPassword())) {
 			throw new IllegalArgumentException("Invalid Login or password");
 		}
-		String jwt = jwtUtil.createAccessToken(realUser.getMemberId(), realUser.getRoles());
 		
+		String jwt  = jwtUtil.createAccessToken(realUser.getMemberId(), realUser.getRoles());
 		
-		return jwtUtil.createAccessToken(realUser.getMemberId(), realUser.getRoles());
+		return new JwtDto(jwt, realUser.getMemberId(), realUser.getRoles());
 	}
 }

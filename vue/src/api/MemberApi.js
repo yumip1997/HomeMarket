@@ -1,25 +1,31 @@
-import AxiosClient from './AxiosClient';
+import AxiosClient from './AxiosClient'
 
 class MemberApi{
     constructor(){
-        this.client = new AxiosClient('/member');
+        this.client = new AxiosClient('/api/homemarket/member')
     }
 
-    async register(member){
-        return this.client.post('/create', member);
+    async register(member){ 
+        console.log(member)
+        const data = await this.client.post('/create', member)
+        return data.status
     }
 
-    async findById(memberId){
-        const data = (await this.client.get('/retrieveById', {memberId : memberId})).data;
-        return data;
+    async findByMemberId(memberId){
+        const data = (await this.client.get('/retrieveById', {
+            memberId : memberId
+        })).data
+        return data
     }
 
     async modify(member){
-        return this.client.put('/update', member);
+        return this.client.put('/update', member)
     }
 
-    async delete(memberId){
-        return this.client.delete('/delete', {memberId : memberId});
+    async remove(memberId){
+        return this.client.delete('/delete', {
+            memberId : memberId
+        })
     }
 }
 

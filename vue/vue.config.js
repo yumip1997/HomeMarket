@@ -1,11 +1,12 @@
-module.exports = {  
-  devServer: {  
-	  proxy : {
-		'/' :{
-		target : 'http://localhost:8080',
-		ws : true,
-		changeOrigin : true 
-	  }
-	} 
+module.exports = {
+    devServer: {
+        proxy: {
+            '/api/homemarket': {
+                target: "http://localhost:8080",
+                pathRewrite: {
+                    '/api/homemarket': '/'
+                }
+            }
+        }
+    }
 }
-};

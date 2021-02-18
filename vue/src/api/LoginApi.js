@@ -1,12 +1,13 @@
-import AxiosClient from './AxiosClient';
+import AxiosClient from './AxiosClient'
 
 class LoginApi{
     constructor(){
-        this.client = new AxiosClient('/login')
+        this.client = new AxiosClient('/api/homemarket/login');
     }
 
     async login(memberId, password){
-        const data = (await this.client.post('/loginCheck', {
+        console.log("api에서의 memberId :"  + memberId);
+        const data = (await this.client.post('/loginCheck',{
             memberId : memberId,
             password : password
         })).data
@@ -14,6 +15,6 @@ class LoginApi{
     }
 }
 
-const instance = new LoginApi();
+const instance = new LoginApi()
 
-export default instance;
+export default instance

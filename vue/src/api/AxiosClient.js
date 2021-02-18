@@ -24,7 +24,7 @@ class AxiosClient {
     }
 
     async delete(url, params) {
-        return this.client.delete(this.baseUrl + url, {params: params});
+        return this.client.delete(this.baseUrl + url, {params : params});
     }
 }
 

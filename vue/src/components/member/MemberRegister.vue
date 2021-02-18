@@ -1,84 +1,44 @@
 <template>
-<b-container>
-    <b-container id="register" class="text-center">
-        <h1>회원가입</h1>
-    </b-container>
-
-    <b-container>
-        <b-form-group 
-            label="아이디 : ">
-         <b-form-input 
-            type="text"
-            placeholder="아이디를 입력하세요"
-            v-model="member.memberId">
-        </b-form-input>
-        </b-form-group>
-
-        <b-form-group  
-            label="이름 : ">
-         <b-form-input 
-            type="text"
-            placeholder="이름을 입력하세요"
-            v-model="member.name">
-        </b-form-input>
-        </b-form-group>
-
-        <b-form-group 
-            label="이메일 : ">
-        <b-form-input 
-            type="text"
-            placeholder="이메일을 입력하세요"
-            v-model="member.email">
-        </b-form-input>
-        </b-form-group>
-
-        <b-form-group 
-            label="비밀번호 : ">
-        <b-form-input 
-            type="password"
-            placeholder="비밀번호를 입력하세요"
-            v-model="member.password">
-        </b-form-input>
-        </b-form-group>
-
-        <b-form-group 
-            label="주소 : ">
-        <b-form-input 
-            type="text"
-            placeholder="주소를 입력하세요"
-            v-model="member.address">
-        </b-form-input>
-        </b-form-group>
-        <b-button type="button" @click="register">가입하기</b-button>       
-        </b-container>
-</b-container>
+  <member-register-view :reigsterOk="this.registerCheck" @register-event="registerHandler">
+  </member-register-view>
 </template>
 
 <script>
-import { Member } from '@/model'
-import { MemberApi } from '@/api'
+import {MemberRegisterView} from '@/views'
+import {MemberApi} from '@/api'
 
 export default {
-    name : 'member-register',
-    data : function(){
-        return {
-            member : new Member()
-        };
+    name : 'MemberRegister',
+    components : {
+        MemberRegisterView,
     },
-    methods :{
-        register : function(){
-            MemberApi.register(this.member)
-            .then(value => console.log(value));
-            
-            this.$router.push('/');
+    data : function(){
+      return {
+        registerCheck : false,
+      }
+    },
+    methods : {
+      registerHandler : function(member){
+        console.log(member)
+        MemberApi.register(member)
+        .then(value => { 
+          console.log(value)
+          value === 200 ? this.registerCheck = true : this.registerCheck = false
+          this.isOkRegister(this.registerCheck)
+        })
+      },
+      isOkRegister : function(registerCheck){
+        if(registerCheck){
+          alert('회원가입이 완료되었습니다.')
+          this.$router.push('/')
+        }else{
+          alert('다시 시도해주세요!')
         }
+      }
     }
 }
 </script>
 
 <style>
-#register {
-    padding : 20px
-    
-}
+
 </style>

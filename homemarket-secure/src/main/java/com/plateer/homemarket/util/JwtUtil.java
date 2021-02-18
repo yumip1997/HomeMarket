@@ -43,9 +43,9 @@ public class JwtUtil {
 	}
 	
 	//JWT 토큰 생성
-	public String createAccessToken(String user, List<Role> roles) {
-		Claims claims = Jwts.claims().setSubject(user);
-		claims.put("memberId", user);
+	public String createAccessToken(String memberId, List<Role> roles) {
+		Claims claims = Jwts.claims().setSubject(memberId);
+		claims.put("memberId", memberId);
 		claims.put("roles", roles);
 		Date now = new Date();
 		
@@ -67,7 +67,8 @@ public class JwtUtil {
 		// TODO Auto-generated method stub
 		return Jwts.parser().setSigningKey(secretKey).parsePlaintextJws(token).getBody();
 	}
-
+	
+	//토근 유효성 검증
 	public boolean validateToken(HttpServletRequest request) {
 		String token = request.getHeader("AUTH_TOKEN");
 		if(token == null) return false;

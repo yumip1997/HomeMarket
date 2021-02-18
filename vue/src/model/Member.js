@@ -1,12 +1,13 @@
-class Member{
-    constructor(memberId, name, password, email, address, joinDate, auth){
+class Member {
+    constructor(memberId, name, password, email, addresses, joinDate, roles){
         this.memberId = memberId;
         this.name = name;
         this.password = password;
+        this.addresses = addresses;
         this.email = email;
-        this.address = address;
         this.joinDate = joinDate;
-        this.auth = auth;
+        this.roles =  roles;
+
     }
 }
 
