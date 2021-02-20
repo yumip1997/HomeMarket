@@ -1,19 +1,16 @@
 <template>
 <div>
-  <main-header />
-  <main-content />
+  <main-header-view />
 </div>
 </template>
 
 <script>
-import { MainHeader } from '@/components'
-import { MainContent } from '@/components'
+import { MainHeaderView } from '@/views'
 
 export default {
   name: 'App',
   components: {
-    MainHeader,
-    MainContent
+    MainHeaderView,
   }
 }
 </script>

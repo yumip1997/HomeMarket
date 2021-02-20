@@ -1,6 +1,6 @@
 <template>
     <div>
-    <sui-menu pointing>
+      <sui-menu pointing>
       <a
         is="sui-menu-item"
         v-for="menu in leftMenus"
@@ -25,28 +25,25 @@
 
 <script>
 export default {
-    name : 'MainHeaderView',
-    props : {
-      activeMenu : String,
-    },
-    data : function(){
+    name : 'MainMenu',
+    data : () => {
         return {
             leftMenus : ['Home', '구매하기'],
             rightMenus : ['판매하기', '마이페이지', '로그아웃', '회원가입', '로그인'],
+            activeMenu : 'Home',
         }
-    }, 
+    },
     methods : {
-        menuClickHandler : function(menu) {
-          this.$emit('menu-event', menu);
+        menuClickHandler : (menu) => {
+            //menu Store에 보내기
+            console.log(menu);
         },
         isActive(name) {
           return this.activeMenu === name;
         }
     },
     computed : {
-      loggedIn(){
-        return this.$store.getters.loggedIn;
-      }
+        //click 된 menu 가져오기
     }
 }
 </script>

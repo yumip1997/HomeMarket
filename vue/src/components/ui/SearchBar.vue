@@ -1,11 +1,10 @@
 <template>
-<div></div>
+  <div></div>
 </template>
 
 <script>
-
 export default {
-    name : 'MemberRegister',
+    name : 'SearchBar'
 }
 </script>
 
