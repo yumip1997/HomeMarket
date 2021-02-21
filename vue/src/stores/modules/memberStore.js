@@ -1,29 +1,21 @@
-import {LoginApi} from '@/api'
+import {MemberApi} from '@/api'
 
 const memberStore = {
     state : {
-        loggedIn : false,
-        loggedInMember : null,
-        token : localStorage.getItem('accessToken') || null,
-        },
+        
+    },
     getters : {
-        loggedIn(state){
-            return state.token != null;
-        }
+       
     },
     mutations : {
-        retrieveToken(state, token){
-            state.token = token;
-        }
+       
     },
     actions : {
-        retrieveToken(context, credentials){
+        register(context, member){
             return new Promise((resolve, reject) => {
-                LoginApi.login(credentials.memberId, credentials.password)
-                .then(response =>{
-                    const token = response.accessToken;
-                    localStorage.setItem('accessToken', token);
-                    context.commit('retrieveToken', token);
+                MemberApi.register(member)
+                .then(response => {
+                    console.log(response);
                     resolve(response);
                 })
                 .catch(error => {

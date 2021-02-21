@@ -71,10 +71,10 @@ export default {
             this.$router.push('/');
             break;
           case 'signUp' :
-            this.$router.push({name : 'memberRegister'});
+            this.$router.push('/member/register');
             break;
           case 'signIn' :
-            this.$router.push({name : 'signIn'});
+            this.$router.push('/auth/signIn');
             break;
         }
       },

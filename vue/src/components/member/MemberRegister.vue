@@ -50,18 +50,24 @@
         </sui-form-field>
       </sui-form-fields>
     </sui-form-field>
-
+    
     <sui-button primary @click="registerBtnHandler" type="button">회원가입</sui-button>
+    <submit-button />
   </sui-form>
 </sui-container>
 </template>
 
 <script>
 import {Member, Address} from '@/model'
+import {SubmitButton} from '@/components/ui'
+
 
 export default {
     name : 'MemberRegister',
-        data : function() {
+    components : {
+      SubmitButton
+    },
+    data : function() {
       return {
         member : new Member(),
         addresses : [],
@@ -78,8 +84,14 @@ export default {
         this.addresses.push(this.address);
         this.member.addresses = this.addresses;
         
-        this.$emit('register-event', this.member);
-        if(this.registerOk) alert('회원가입에 실패하였습니다')
+        this.$store.dispatch('register', this.member)
+        .then(response => {
+          console.log("view 단" + response)
+        })
+        .catch(error => {
+          console.log(error);
+          this.error = true;
+        })
       }
     }
 }
