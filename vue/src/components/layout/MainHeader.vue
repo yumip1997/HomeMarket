@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import {MainMenu} from '@/components'
+import {MainMenu} from '@/components/ui'
 
 
 export default {

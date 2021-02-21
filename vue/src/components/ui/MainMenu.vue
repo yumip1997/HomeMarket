@@ -1,24 +1,55 @@
 <template>
     <div>
       <sui-menu pointing>
-      <a
+        <a 
         is="sui-menu-item"
-        v-for="menu in leftMenus"
-        :active="isActive(menu)"
-        :key="menu"
-        :content="menu"
-        @click="menuClickHandler(menu)"
-      />
-      <sui-menu-menu position="right">
+        :active="isActive('home')"
+        @click="menuClickHandler('home')"
+        >Home
+        </a>
+        <a 
+        is="sui-menu-item"
+        :active="isActive('buying')"
+        @click="menuClickHandler('buying')"
+        >구매하기
+        </a>
+        <a 
+        is="sui-menu-item"
+        :active="isActive('selling')"
+        @click="menuClickHandler('selling')"
+        >판매하기
+        </a>
+
+        <sui-menu-menu position="right">
         <a
+        v-if="isLoggedIn" 
         is="sui-menu-item"
-        v-for="menu in rightMenus"
-        :active="isActive(menu)"
-        :key="menu"
-        :content="menu"
-        @click="menuClickHandler(menu)"
-      />
-      </sui-menu-menu>
+        :active="isActive('myInfo')"
+        @click="menuClickHandler('myInfo')"
+        >마이페이지
+        </a>
+        <a 
+        v-if="isLoggedIn"
+        is="sui-menu-item"
+        :active="isActive('selling')"
+        @click="menuClickHandler('logout')"
+        >로그아웃
+        </a>
+        <a
+        v-if="!isLoggedIn" 
+        is="sui-menu-item"
+        :active="isActive('signUp')"
+        @click="menuClickHandler('signUp')"
+        >회원가입
+        </a>
+        <a
+        v-if="!isLoggedIn" 
+        is="sui-menu-item"
+        :active="isActive('signIn')"
+        @click="menuClickHandler('signIn')"
+        >로그인
+        </a>
+        </sui-menu-menu>
     </sui-menu>
   </div>
 </template>
@@ -26,25 +57,37 @@
 <script>
 export default {
     name : 'MainMenu',
-    data : () => {
+    data : function() {
         return {
-            leftMenus : ['Home', '구매하기'],
-            rightMenus : ['판매하기', '마이페이지', '로그아웃', '회원가입', '로그인'],
-            activeMenu : 'Home',
+            activeMenu : 'home',
         }
     },
     methods : {
-        menuClickHandler : (menu) => {
-            //menu Store에 보내기
-            console.log(menu);
-        },
-        isActive(name) {
-          return this.activeMenu === name;
+      menuClickHandler : function(menu) {
+        this.activeMenu = menu;
+          
+        switch (menu) {
+          case 'home' :
+            this.$router.push('/');
+            break;
+          case 'signUp' :
+            this.$router.push({name : 'memberRegister'});
+            break;
+          case 'signIn' :
+            this.$router.push({name : 'signIn'});
+            break;
         }
+      },
+      isActive : function(menu) {
+        return this.activeMenu === menu;
+      },
     },
     computed : {
-        //click 된 menu 가져오기
-    }
+      isLoggedIn : function() {
+            return this.$store.getters.loggedIn;
+          }
+        }    
+
 }
 </script>
 

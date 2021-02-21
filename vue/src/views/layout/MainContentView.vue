@@ -1,10 +1,14 @@
 <template>
-  <div></div>
+  <main-content />
 </template>
 
 <script>
+import { MainContent } from '@/components'
 export default {
-    name : 'MainContetnView'
+    name : 'MainContetnView',
+    components : {
+      MainContent,
+    }
 }
 </script>
 

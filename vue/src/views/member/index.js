@@ -1,2 +1,2 @@
 export {default as MemberRegisterView} from './MemberRegisterView'
-export {default as LoginView} from './LoginView'
+export {default as SignInView} from './SignInView'
