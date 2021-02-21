@@ -2,35 +2,55 @@ import {LoginApi} from '@/api'
 
 const authStore = {
     state : {
-        loggedIn : false,
-        loggedInMember : null,
-        token : localStorage.getItem('accessToken') || null,
-        },
+        accessToken : localStorage.getItem('accessToken') || null,
+        loggedInMember : localStorage.getItem('loggedInMember') || null
+    },
+
     getters : {
         loggedIn(state){
-            return state.token != null;
+            return state.accessToken != null;
         }
     },
     mutations : {
-        retrieveToken(state, token){
-            state.token = token;
+        retrieveToken(state, payload) {
+            state.accessToken = payload.accessToken;
+            state.loggedInMember = payload.loggedInMember;
+        },
+        destoryToken(state){
+            state.accessToken = null;
+            state.loggedInMember = null;
         }
     },
     actions : {
-        retrieveToken(context, credentials){
+        retrieveToken(context, payload){
             return new Promise((resolve, reject) => {
-                LoginApi.login(credentials.memberId, credentials.password)
+                LoginApi.login(payload.memberId, payload.password)
                 .then(response =>{
-                    const token = response.accessToken;
-                    localStorage.setItem('accessToken', token);
-                    context.commit('retrieveToken', token);
+                    const accessToken = response.accessToken;
+                    const memberId = response.memberId;
+
+                    localStorage.setItem('accessToken', accessToken);
+                    localStorage.setItem('loggedInMember', memberId);
+
+                    context.commit('retrieveToken', {
+                        accessToken : accessToken,
+                        loggedInMember :  memberId
+                    });
                     resolve(response);
                 })
                 .catch(error => {
                     reject(error);
-                    console.log(error);
                 })
             })
+        },
+        destoryToken(context){
+            if(context.getters.loggedIn){
+                //백엔드 단에서 logout 기능 추가 필요!!
+                localStorage.removeItem('accessToken');
+                localStorage.removeItem('memberId');
+
+                context.commit('destoryToken');
+            }
         }
     }
 }

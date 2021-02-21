@@ -1,10 +1,16 @@
-import {SignInView} from '@/views'
+import { AuthView }  from '@/views'
+import { SignIn } from '@/components'
 
 const authRoutes = [
     {
-        path : '/signIn',
-        name : 'signIn', 
-        component : SignInView
+        path : '/auth',
+        component : AuthView,
+        children : [
+            {
+                path : 'signIn',
+                component : SignIn
+            }
+        ]
     }
 ];
 

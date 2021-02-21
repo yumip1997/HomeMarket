@@ -70,12 +70,18 @@ export default {
           case 'home' :
             this.$router.push('/');
             break;
+          case 'myInfo' :
+            this.$router.push('/member/detail');
+            break;
           case 'signUp' :
             this.$router.push('/member/register');
             break;
           case 'signIn' :
             this.$router.push('/auth/signIn');
             break;
+          case 'logout' :
+            this.$store.dispatch('destoryToken');
+            this.$router.push('/');
         }
       },
       isActive : function(menu) {
