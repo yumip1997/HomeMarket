@@ -6,7 +6,6 @@ class LoginApi{
     }
 
     async login(memberId, password){
-        console.log("api에서의 memberId :"  + memberId);
         const data = (await this.client.post('/loginCheck',{
             memberId : memberId,
             password : password

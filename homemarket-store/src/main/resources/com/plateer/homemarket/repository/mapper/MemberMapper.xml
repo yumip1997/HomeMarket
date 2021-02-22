@@ -49,7 +49,7 @@
 			member_id, 
 			name, 
 			email, 
-			address, 
+			addresses, 
 			join_date as joinDate, 
 			roles
 	from member
@@ -61,7 +61,7 @@
 			member_id, 
 			name, 
 			email, 
-			address, 
+			addresses, 
 			join_date as joinDate, 
 			roles
 	from member
@@ -74,7 +74,7 @@
 		name = #{name},
 		password = #{password},
 		email = #{email},
-		address = #{address, typeHandler=AddressTypeHandler}
+		addresses = #{addresses, typeHandler=AddressTypeHandler}
 	where
 		member_id = #{memberId}
 </update>

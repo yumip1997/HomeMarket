@@ -12,7 +12,8 @@ const memberStore = {
     },
     mutations : {
        findByMemberId : (state, payload) => {
-           return state.member.push(payload);
+        console.log(payload);   
+        state.member = payload;
        },
        
     },
@@ -35,9 +36,7 @@ const memberStore = {
             return new Promise((resolve, reject) => {
                 MemberApi.findByMemberId(payload)
                 .then(response => {
-                    console.log(response);
-                    //mutations에 commit해줘야함
-                    context.commit('findByMemberId');
+                    context.commit('findByMemberId', response);
                     resolve(response);
                 })
                 .catch(error => {

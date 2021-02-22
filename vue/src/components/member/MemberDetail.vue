@@ -6,7 +6,8 @@
 export default {
     name : 'MemberDetail',
     created : function(){
-      this.$store.dispatch('findByMemberId', this.$store.state.loggedInMember);
+      const memberId = this.$store.getters.loggedInMember;
+      this.$store.dispatch('findByMemberId', memberId);
     },
     computed : {
       member : function(){

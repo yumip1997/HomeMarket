@@ -9,6 +9,9 @@ const authStore = {
     getters : {
         loggedIn(state){
             return state.accessToken != null;
+        },
+        loggedInMember(state){
+            return state.loggedInMember;
         }
     },
     mutations : {
