@@ -11,8 +11,7 @@ const memberStore = {
        }
     },
     mutations : {
-       findByMemberId : (state, payload) => {
-        console.log(payload);   
+       findByMemberId : (state, payload) => {  
         state.member = payload;
        },
        
