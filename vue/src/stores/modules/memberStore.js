@@ -18,16 +18,13 @@ const memberStore = {
     },
     actions : {
         register(context, member){
-            return new Promise((resolve, reject) => {
-                MemberApi.register(member)
-                .then(response => {
-                    console.log(response);
-                    resolve(response);
-                })
-                .catch(error => {
-                    console.log(error);
-                    reject(error);
-                })
+            MemberApi.register(member)
+            .then(response => {
+                console.log(response)
+                return response;
+            })
+            .catch(error => {
+                console.log(error)
             })
         },
         

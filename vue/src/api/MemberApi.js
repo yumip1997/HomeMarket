@@ -8,7 +8,7 @@ class MemberApi{
     async register(member){ 
         console.log(member)
         const data = await this.client.post('/create', member)
-        return data.status
+        return data;
     }
 
     async findByMemberId(memberId){

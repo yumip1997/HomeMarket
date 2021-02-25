@@ -75,7 +75,8 @@ export default {
         addressType :[
           {text : '집', value : 'Home'},
           {text : '회사', value : 'Office'}
-        ]
+        ],
+        error : false,
       }
     },
     methods : {
@@ -86,7 +87,7 @@ export default {
         
         this.$store.dispatch('register', this.member)
         .then(response => {
-          console.log("view 단" + response)
+          response === 200 ? this.$dispatch.push('/') : this.error = true;
         })
         .catch(error => {
           console.log(error);

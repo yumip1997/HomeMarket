@@ -51,7 +51,7 @@ public class HomeMarketApplication {
 //						.modelRef(new ModelRef("string")) // data-type of the header
 //						.required(true) // required/optional
 //						.parameterType("header") // for query-param, this value can be 'query'
-//						.description("auth token")
+//						.description("auth token")st6
 //						.build();
 //
 //		return Collections.singletonList(authTokenHeader);
