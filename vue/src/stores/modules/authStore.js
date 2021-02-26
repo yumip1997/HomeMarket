@@ -25,7 +25,7 @@ const authStore = {
         }
     },
     actions : {
-        retrieveToken(context, payload){
+        retrieveToken({commit}, payload){
             return new Promise((resolve, reject) => {
                 LoginApi.login(payload.memberId, payload.password)
                 .then(response =>{
@@ -35,7 +35,7 @@ const authStore = {
                     localStorage.setItem('accessToken', accessToken);
                     localStorage.setItem('loggedInMember', memberId);
 
-                    context.commit('retrieveToken', {
+                    commit('retrieveToken', {
                         accessToken : accessToken,
                         loggedInMember :  memberId
                     });

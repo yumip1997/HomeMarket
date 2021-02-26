@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <sui-container>
     <div is="sui-divider" horizontal>
       <h4 is="sui-header">
         <i class="bar chart icon"></i>
@@ -54,7 +54,8 @@
       </sui-segments>
     </sui-segment>
   </div>
-  </div>
+  <sui-button primary @click="registerBtnHandler" type="button">회원가입</sui-button>
+  </sui-container>
 </template>
 
 <script>
@@ -73,5 +74,4 @@ export default {
 </script>
 
 <style>
-
 </style>
