@@ -17,8 +17,9 @@
       <input type="text" v-model="member.email"/>
     </sui-form-field>
 
+  <sui-form-field>
+    <label>주소</label>
     <sui-form-field v-for="(address, index) in member.addresses" v-bind:key='index'> 
-      <label>주소</label>
       <sui-form-fields>
         <sui-form-field width="six">
           <label>우편번호</label>
@@ -45,12 +46,14 @@
         </sui-form-field>
       </sui-form-fields>
     </sui-form-field>
-    <sui-button primary @click="modifyCompletedBtnHandler" type="button">수정완료</sui-button>
+  </sui-form-field>
+  <sui-button primary @click="modifyCompletedBtnHandler" type="button">수정완료</sui-button>
   </sui-form>
 </sui-container>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
     name : 'MemberModify',
     data : function(){
@@ -67,9 +70,9 @@ export default {
       }
     },
     computed : {
-      member : function(){
-        return this.$store.getters.member;
-      }
+      ...mapGetters({
+        member : 'getMember'
+      })
     }
 }
 </script>

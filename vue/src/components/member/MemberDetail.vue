@@ -59,21 +59,28 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
+
 export default {
     name : 'MemberDetail',
     created : function(){
-      const memberId = this.$store.getters.loggedInMember;
-      this.$store.dispatch('findByMemberId', memberId);
+      const memberId = this.loggedInMember;
+      this.findByMemberId(memberId);
+      
     },
     methods : {
+      ...mapActions({
+        findByMemberId : 'findByMemberId'
+      }),
       modifyBtnHandler : function(){
         this.$router.push('/member/modify')
       }
     },
     computed : {
-      member : function(){
-        return this.$store.getters.member;
-      }
+      ...mapGetters({
+        loggedInMember : 'getLoggedInMember',
+        member : 'getMember'
+      })
     }
 }
 </script>
