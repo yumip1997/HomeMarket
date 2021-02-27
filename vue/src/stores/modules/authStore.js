@@ -3,14 +3,14 @@ import {LoginApi} from '@/api'
 const authStore = {
     state : {
         accessToken : localStorage.getItem('accessToken') || null,
-        loggedInMember : localStorage.getItem('loggedInMember') || null
+        loggedInMember : localStorage.getItem('loggedInMember') || null,
     },
 
     getters : {
-        loggedIn(state){
+        isLoggedIn(state){
             return state.accessToken != null;
         },
-        loggedInMember(state){
+        getLoggedInMember(state){
             return state.loggedInMember;
         }
     },
@@ -46,13 +46,13 @@ const authStore = {
                 })
             })
         },
-        destoryToken(context){
-            if(context.getters.loggedIn){
-                //백엔드 단에서 logout 기능 추가 필요!!
+        destoryToken({commit, state}){
+            if(state.accessToken){
+                //백엔드 단에서 logout 로직 처리 필요!
                 localStorage.removeItem('accessToken');
-                localStorage.removeItem('memberId');
+                localStorage.removeItem('loggedInMember');
 
-                context.commit('destoryToken');
+                commit('destoryToken');
             }
         }
     }

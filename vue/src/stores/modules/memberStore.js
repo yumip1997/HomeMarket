@@ -6,7 +6,7 @@ const memberStore = {
         member : new Member(), 
     },
     getters : {
-       member(state){
+       getMember(state){
            return state.member;
        }
     },
