@@ -55,6 +55,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
     name : 'MainMenu',
     data : function() {
@@ -89,11 +91,10 @@ export default {
       },
     },
     computed : {
-      isLoggedIn : function() {
-            return this.$store.getters.loggedIn;
-          }
-        }    
-
+      ...mapGetters({
+        isLoggedIn : 'isLoggedIn'
+      })
+    }
 }
 </script>
 
