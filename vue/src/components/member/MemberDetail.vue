@@ -54,7 +54,7 @@
       </sui-segments>
     </sui-segment>
   </div>
-  <sui-button primary @click="registerBtnHandler" type="button">회원가입</sui-button>
+  <sui-button primary @click="modifyBtnHandler" type="button">수정하기</sui-button>
   </sui-container>
 </template>
 
@@ -64,6 +64,11 @@ export default {
     created : function(){
       const memberId = this.$store.getters.loggedInMember;
       this.$store.dispatch('findByMemberId', memberId);
+    },
+    methods : {
+      modifyBtnHandler : function(){
+        this.$router.push('/member/modify')
+      }
     },
     computed : {
       member : function(){

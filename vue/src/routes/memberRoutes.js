@@ -1,5 +1,5 @@
 import { MemberView } from '@/views'
-import { MemberRegister, MemberDetail } from '@/components'
+import { MemberRegister, MemberDetail, MemberModify } from '@/components'
 
 const memberRoutes = [
     {
@@ -13,7 +13,11 @@ const memberRoutes = [
             {
                 path : 'detail',
                 component : MemberDetail
-            }
+            },
+            {
+                path : 'modify',
+                component : MemberModify
+            },
         ]
     },
 ];

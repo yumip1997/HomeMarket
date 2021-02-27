@@ -16,6 +16,7 @@ const memberStore = {
        },
        
     },
+    
     actions : {
         register(context, member){
             MemberApi.register(member)

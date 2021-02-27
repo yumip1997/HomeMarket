@@ -52,21 +52,15 @@
     </sui-form-field>
     
     <sui-button primary @click="registerBtnHandler" type="button">회원가입</sui-button>
-    <submit-button />
   </sui-form>
 </sui-container>
 </template>
 
 <script>
 import {Member, Address} from '@/model'
-import {SubmitButton} from '@/components/ui'
-
 
 export default {
     name : 'MemberRegister',
-    components : {
-      SubmitButton
-    },
     data : function() {
       return {
         member : new Member(),
@@ -87,7 +81,7 @@ export default {
         
         this.$store.dispatch('register', this.member)
         .then(response => {
-          response === 200 ? this.$dispatch.push('/') : this.error = true;
+          response === 200 ? this.$router.push('/') : this.error = true;
         })
         .catch(error => {
           console.log(error);
