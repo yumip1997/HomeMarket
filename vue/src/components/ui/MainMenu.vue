@@ -91,9 +91,7 @@ export default {
       },
     },
     computed : {
-      ...mapGetters({
-        isLoggedIn : 'isLoggedIn'
-      })
+      ...mapGetters(['isLoggedIn'])
     }
 }
 </script>

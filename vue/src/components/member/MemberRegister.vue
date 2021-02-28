@@ -1,7 +1,7 @@
 <template>
-<sui-container>
+<sui-container id="register-container">
     <sui-header dividing id="register-header"><h1>회원가입</h1></sui-header>
-    <sui-form id="register-form">
+    <sui-form>
     <sui-form-field>
       <label>아이디</label>
       <input type="text" placeholder="아이디를 입력하세요" v-model="member.memberId"/>
@@ -57,7 +57,8 @@
 </template>
 
 <script>
-import {Member, Address} from '@/model'
+import { Member, Address } from '@/model'
+import { mapActions } from 'vuex'
 
 export default {
     name : 'MemberRegister',
@@ -74,18 +75,19 @@ export default {
       }
     },
     methods : {
+      ...mapActions(['register']),
+
       registerBtnHandler : function(){
         //주소 설정
         this.addresses.push(this.address);
         this.member.addresses = this.addresses;
         
-        this.$store.dispatch('register', this.member)
-        .then(response => {
-          response === 200 ? this.$router.push('/') : this.error = true;
+        this.register(this.member)
+        .then(response =>{
+          response === 200 ? this.$router.push('/auth/signIn') : this.error = true;
         })
         .catch(error => {
           console.log(error);
-          this.error = true;
         })
       }
     }
@@ -93,5 +95,7 @@ export default {
 </script>
 
 <style>
-
+#register-container{
+  padding : 10%
+}
 </style>

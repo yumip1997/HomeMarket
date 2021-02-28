@@ -55,6 +55,7 @@
     </sui-segment>
   </div>
   <sui-button primary @click="modifyBtnHandler" type="button">수정하기</sui-button>
+  <sui-button primary @click="removeBtnHandler" type="button">탈퇴하기</sui-button>
   </sui-container>
 </template>
 
@@ -69,11 +70,21 @@ export default {
       
     },
     methods : {
-      ...mapActions({
-        findByMemberId : 'findByMemberId'
-      }),
+      ...mapActions(['findByMemberId', 'remove', 'destoryToken']),
+      
       modifyBtnHandler : function(){
         this.$router.push('/member/modify')
+      },
+
+      removeBtnHandler :  function() {
+        alert(this.member.memberId);
+        this.remove(this.member.memberId)
+        .then(response => {
+          response === 200 ? this.$router.push('/') : alert('탈퇴오류!');
+        })
+        .catch(error =>{
+          console.log(error);
+        })
       }
     },
     computed : {

@@ -4,7 +4,12 @@
     <sui-form id="register-form">
     <sui-form-field>
       <label>아이디</label>
-      <input type="text" v-model="member.memberId"/>
+      <input type="text" v-model="member.memberId" readonly/>
+    </sui-form-field>
+
+    <sui-form-field>
+      <label>비밀번호</label>
+      <input type="password" v-model="member.password"/>
     </sui-form-field>
 
      <sui-form-field>
@@ -53,7 +58,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 export default {
     name : 'MemberModify',
     data : function(){
@@ -61,12 +66,21 @@ export default {
         addressType : [
           {text : '집', value : 'Home'},
           {text : '회사', value : 'Office'}
-        ]
+        ],
+        error : false
       }
     },
     methods : {
-      modifyCompletedBtnHandler : function(){
-        alert('수정 완료!');
+      ...mapActions(['modify']),
+
+      modifyCompletedBtnHandler : function() {
+        this.modify(this.member)
+        .then(response => {
+          response === 200 ? this.$router.push('/member/detail') : this.error = true;
+        })
+        .catch(error => {
+          console.log(error);
+        })
       }
     },
     computed : {

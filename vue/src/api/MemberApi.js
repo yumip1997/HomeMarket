@@ -6,26 +6,27 @@ class MemberApi{
     }
 
     async register(member){ 
-        console.log(member)
-        const data = await this.client.post('/create', member)
-        return data;
+        const status = (await this.client.post('/create', member)).status
+        return status;
     }
 
     async findByMemberId(memberId){
         const data = (await this.client.get('/retrieveById', {
             memberId : memberId
         })).data
-        return data
+        return data;
     }
 
     async modify(member){
-        return this.client.put('/update', member)
+        const status = (await this.client.put('/update', member)).status;
+        return status;
     }
 
     async remove(memberId){
-        return this.client.delete('/delete', {
+        const status = (await this.client.delete('/delete', {
             memberId : memberId
-        })
+        })).status
+        return status;
     }
 }
 
