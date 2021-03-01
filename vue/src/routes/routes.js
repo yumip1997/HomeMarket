@@ -1,9 +1,12 @@
 import VueRouter from 'vue-router'
+import {HomeComponent} from '@/components'
 import memberRoutes from './memberRoutes'
 import authRoutes from './authRoutes'
 
 export default new VueRouter({
-    routes : [
+    routes : [{
+        path : '/', component : HomeComponent
+    },
         ...memberRoutes, 
         ...authRoutes
     ]
