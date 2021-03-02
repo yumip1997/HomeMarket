@@ -1,10 +1,17 @@
 <template>
-  <div></div>
+  <div>
+    <calendar-bar/>
+  </div>
 </template>
 
 <script>
+import {CalendarBar} from '@/components/ui'
+
 export default {
-    name : 'OrderList'
+    name : 'OrderList',
+    components : {
+      CalendarBar,
+    }
 }
 </script>
 

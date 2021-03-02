@@ -18,9 +18,18 @@ export default {
     data : function(){
         return {
             itemsAsKorean : {
-                orderList : '주문목록',
+                list : '주문목록',
                 sellingProductOrderList : '판매상품 주문목록'
             },
+            active : 'orderList'
+        }
+    },
+    methods : {
+        isActive : function(name){
+            return name === this.active;
+        },
+        orderMenuBtnHandler : function(name) {
+            this.$router.push('/order/'+name);
         }
     }
 }
