@@ -10,6 +10,8 @@ import App from './App.vue'
 import SuiVue from 'semantic-ui-vue'
 import 'semantic-ui-css/semantic.min.css'
 
+import VCalendar from 'v-calendar'
+
 var sessionOptions = {
   persist : true
 };
@@ -21,6 +23,7 @@ Vue.use(VueSession, sessionOptions);
 Vue.use(VueSession);
 Vue.use(Vuex);
 Vue.use(SuiVue);
+Vue.use(VCalendar);
 
 new Vue({
   render: h => h(App),
