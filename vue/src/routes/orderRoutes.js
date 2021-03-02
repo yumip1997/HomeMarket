@@ -1,5 +1,5 @@
 import { OrderView } from '@/views'
-import { OrderList } from '@/components'
+import { OrderList, SellingProductOrderList } from '@/components'
 
 const orderRoutes = [
     {
@@ -9,6 +9,10 @@ const orderRoutes = [
             {
                 path : 'list',
                 component : OrderList
+            },
+            {
+                path : 'sellingProductOrderList',
+                component : SellingProductOrderList
             }
         ]
     }
