@@ -3,15 +3,15 @@ import {LoginApi} from '@/api'
 const authStore = {
     state : {
         accessToken : localStorage.getItem('accessToken') || null,
-        loggedInMember : localStorage.getItem('loggedInMember') || null,
+        loggedInMemberId : localStorage.getItem('loggedInMemberId') || null,
     },
 
     getters : {
         isLoggedIn(state){
             return state.accessToken != null;
         },
-        getLoggedInMember(state){
-            return state.loggedInMember;
+        getLoggedInMemberId(state){
+            return state.loggedInMemberId;
         }
     },
     mutations : {
@@ -33,11 +33,11 @@ const authStore = {
                     const memberId = response.memberId;
 
                     localStorage.setItem('accessToken', accessToken);
-                    localStorage.setItem('loggedInMember', memberId);
+                    localStorage.setItem('loggedInMemberId', memberId);
 
                     commit('retrieveToken', {
                         accessToken : accessToken,
-                        loggedInMember :  memberId
+                        loggedInMemberId :  memberId
                     });
                     resolve(response);
                 })
@@ -50,7 +50,7 @@ const authStore = {
             if(state.accessToken){
                 //백엔드 단에서 logout 로직 처리 필요!
                 localStorage.removeItem('accessToken');
-                localStorage.removeItem('loggedInMember');
+                localStorage.removeItem('loggedInMemberId');
 
                 commit('destoryToken');
             }

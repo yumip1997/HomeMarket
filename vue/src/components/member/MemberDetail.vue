@@ -61,23 +61,23 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
+import { Member } from '@/model'
 
 export default {
     name : 'MemberDetail',
-    created : function(){
-      const memberId = this.loggedInMember;
-      this.findByMemberId(memberId);
-      
+    data : function(){
+      return {
+        member : new Member()
+      }
     },
     methods : {
-      ...mapActions(['findByMemberId', 'remove', 'destoryToken']),
+      ...mapActions(['findByMemberId', 'remove']),
       
       modifyBtnHandler : function(){
         this.$router.push('/member/modify')
       },
 
       removeBtnHandler :  function() {
-        alert(this.member.memberId);
         this.remove(this.member.memberId)
         .then(response => {
           response === 200 ? this.$router.push('/') : alert('탈퇴오류!');
@@ -87,10 +87,19 @@ export default {
         })
       }
     },
+    created : function(){
+      const memberId = this.loggedInMemberId;
+      this.findByMemberId(memberId)
+      .then(response =>{
+        this.member = response;
+      })
+      .catch(error =>{
+        console.log(error);
+      })  
+    },
     computed : {
       ...mapGetters({
-        loggedInMember : 'getLoggedInMember',
-        member : 'getMember'
+        loggedInMemberId : 'getLoggedInMemberId',
       })
     }
 }

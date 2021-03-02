@@ -22,6 +22,14 @@
 
         <sui-menu-menu position="right">
         <a
+        v-if="isLoggedIn"
+        is="sui-menu-item"
+        :active="isActive('order')"
+        @click="menuClickHandler('order')"
+        >
+        주문정보
+        </a>
+        <a
         v-if="isLoggedIn" 
         is="sui-menu-item"
         :active="isActive('myInfo')"
@@ -72,6 +80,9 @@ export default {
           case 'home' :
             this.$router.push('/');
             break;
+          case 'order' :
+            this.$router.push('/order');
+            break;
           case 'myInfo' :
             this.$router.push('/member/detail');
             break;
@@ -84,6 +95,7 @@ export default {
           case 'logout' :
             this.$store.dispatch('destoryToken');
             this.$router.push('/');
+            break;
         }
       },
       isActive : function(menu) {

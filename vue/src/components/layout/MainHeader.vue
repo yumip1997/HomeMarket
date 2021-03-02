@@ -12,7 +12,6 @@ export default {
     name : 'MainHeader',
     components : {
         MainMenu
-       
     }
 }
 </script>

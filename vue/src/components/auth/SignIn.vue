@@ -35,6 +35,8 @@
 </template>
 
 <script>
+import {mapActions} from 'vuex'
+
 export default {
     name : 'SingIn',
     data : () => {
@@ -45,20 +47,19 @@ export default {
         }
     },
     methods : {
-        LoginBtnHandler : function() {
-          this.$store.dispatch('retrieveToken', {
-            memberId : this.memberId,
-            password : this.password,
-          })
-          .then(response => {
-            console.log(response);
-            this.$router.push('/');
-          })
-          .catch(error => {
-            console.log(error);
-            this.error = true;
-          })
-        }
+      ...mapActions(['retrieveToken']),
+      LoginBtnHandler : function(){
+        this.retrieveToken({
+          memberId : this.memberId,
+          password : this.password
+        })
+        .then(() => {
+          this.$router.push('/');
+        })
+        .catch(() => {
+          this.error = true;
+        })
+      },
     }
 }
 </script>

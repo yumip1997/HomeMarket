@@ -59,10 +59,13 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import { Member } from '@/model'
+
 export default {
     name : 'MemberModify',
     data : function(){
       return {
+        member : new Member(),
         addressType : [
           {text : '집', value : 'Home'},
           {text : '회사', value : 'Office'}
@@ -71,7 +74,7 @@ export default {
       }
     },
     methods : {
-      ...mapActions(['modify']),
+      ...mapActions(['findByMemberId','modify']),
 
       modifyCompletedBtnHandler : function() {
         this.modify(this.member)
@@ -83,9 +86,19 @@ export default {
         })
       }
     },
+    created : function(){
+      const memberId = this.loggedInMemberId;
+      this.findByMemberId(memberId)
+      .then(response => {
+        this.member = response;
+      })
+      .catch(error =>{
+        console.log(error);
+      })
+    },
     computed : {
       ...mapGetters({
-        member : 'getMember'
+        loggedInMemberId : 'getLoggedInMemberId',
       })
     }
 }

@@ -1,25 +1,6 @@
 import {MemberApi} from '@/api'
-import {Member} from '@/model'
 
 const memberStore = {
-    state : {
-        member : new Member(), 
-    },
-    getters : {
-       getMember(state){
-           return state.member;
-       }
-    },
-    mutations : {
-       findByMemberId : (state, payload) => {  
-        state.member = payload;
-       },
-       
-       remove : (state) => {
-           state.member = null;
-       }
-    },
-    
     actions : {
         register(context, payload){
             return new Promise((resolve, reject) => {
@@ -33,16 +14,14 @@ const memberStore = {
             })
         },
         
-        findByMemberId({commit}, payload){
+        findByMemberId(context, payload){
             return new Promise((resolve, reject) => {
                 MemberApi.findByMemberId(payload)
                 .then(response => {
-                    commit('findByMemberId', response);
                     resolve(response);
                 })
                 .catch(error => {
                     reject(error);
-                    console.log(error);
                 })
             })
         },
@@ -60,7 +39,7 @@ const memberStore = {
             })
         },
 
-        remove({dispatch, commit}, payload){
+        remove({commit, dispatch}, payload){
             return new Promise((resolve, reject) => {
                 MemberApi.remove(payload)
                 .then(response =>{
